@@ -1,0 +1,170 @@
+<div
+  class="pt-[31px] pr-[51px] items-start text-2xl flex flex-row justify-between w-full"
+>
+  <div class="flex flex-row gap-3 items-center text-[#0097E6]">
+    <p-button
+      class="pl-[45px]"
+      (onClick)="sidenavVisible = !sidenavVisible"
+      icon="pi pi-bars"
+      styleClass="p-button-rounded p-button-secondary p-button-text p-button-raised"
+    >
+    </p-button>
+    <span class="font-serif">Tagisphere</span>
+  </div>
+
+  <div class="flex flex-row items-center gap-7 cursor-pointer">
+    <div class="flex">
+      <img src="assets/images/NotificationIcon.png" />
+      <div
+        class="w-[10px] h-[10px] rounded-full bg-[#FF512B] relative right-1"
+      ></div>
+    </div>
+    <p-menu #menu [model]="items" [popup]="true"></p-menu>
+    <div (click)="menu.toggle($event)" class="flex flex-row gap-3">
+      <p-avatar image="assets/images/Avatar.png" size="large"></p-avatar>
+      <div class="flex flex-col">
+        <h1 class="text-[20px] leading-6 text-black">{{ me?.display_name }}</h1>
+        <span class="text-base text-[#A0A3BD] leading-5 font-normal"
+          >Administrator</span
+        >
+      </div>
+    </div>
+    <i (click)="menu.toggle($event)" class="pi pi-angle-down"></i>
+  </div>
+</div>
+
+<section class="flex">
+  <aside>
+    <p-sidebar
+      [style]="{ padding: 0, width: '380px' }"
+      [modal]="false"
+      [(visible)]="sidenavVisible"
+      [showCloseIcon]="sidenavExpandable"
+      (onShow)="sidenavShown()"
+      (onHide)="sidenavHidden()"
+      [closeOnEscape]="false"
+    >
+      <div
+        class="flex xs:flex-col lg:flex-row justify-between items-center gap-10 lg:pb-[51px]"
+      >
+        <div class="flex flex-col lg:items-start xs:gap-2 lg:gap-2 px-8">
+          <p
+            class="text-[#0097E6] font-sans font-medium xs:text-[8px] sm:text-[18px] md:text-[28px] lg:text-[38.4116px]"
+          >
+            The
+          </p>
+          <p
+            class="text-[#0097E6] font-serif font-medium xs:text-4xl sm:text-2xl md:text-2xl lg:text-6xl"
+          >
+            Tagisphere
+          </p>
+          <p
+            class="text-[#4F5974] font-medium xs:text-xl sm:text-2xl md:text-xl lg:text-3xl leading-[54px]"
+          >
+            AR Platform
+          </p>
+          <div class="bg-white p-10 rounded-lg">
+            <img src="assets/images/image 31.png" />
+          </div>
+          <p-button
+            (click)="newProjectDialog()"
+            class="w-full pt-5"
+            label="New Project"
+          ></p-button>
+        </div>
+        <div>
+          <img src="assets/images/header image.png" />
+        </div>
+      </div>
+      <div class="flex flex-col items-start">
+        <p
+          class="pl-8 text-[18px] text-[#C9CBCD] leading-[22.05px] font-semibold"
+        >
+          MENU
+        </p>
+
+        <div class="flex flex-col w-full py-7">
+          <p-button
+            (onClick)="setSelectedMenu(menuItem)"
+            class="flex items-center"
+            styleClass="p-button-text"
+            [ngClass]="{
+              'bg-[#0077F2]': selectedMenu?.label === menuItem.label,
+              'bg-opacity-[0.1]': selectedMenu?.label === menuItem.label
+            }"
+            [style]="{ display: 'block' }"
+            *ngFor="let menuItem of sidebarMenu"
+          >
+            <div class="flex items-center justify-between py-2">
+              <div class="flex items-center">
+                <img class="mr-8" [src]="menuItem.icon" />
+                <p
+                  class="text-[#6A6D78] text-[18px] font-medium leading-[21.83px]"
+                  [style]="
+                    selectedMenu?.label === menuItem.label
+                      ? { color: '#2B84FF' }
+                      : {}
+                  "
+                >
+                  {{ menuItem.label }}
+                </p>
+              </div>
+              <div
+                class="bg-[#2B84FF] px-3 rounded-[7px] text-white"
+                *ngIf="menuItem.notifications > 0"
+              >
+                {{ menuItem.notifications }}
+              </div>
+            </div>
+          </p-button>
+        </div>
+      </div>
+      <div class="mx-8 bg-[#4F5974] bg-opacity-[0.06]">
+        <div class="px-4 pt-[14px] pb-[19px]">
+          <div class="flex items-center justify-between">
+            <p class="text-sm text-[#52596C] font-semibold leading-[15.4px]">
+              {{ MAIN_PAGE_WORDS.SUBSCRIPTION }}
+            </p>
+            <p class="text-sm text-[#3563E9] leading-[17px] font-semibold">
+              {{ MAIN_PAGE_WORDS.CHANGE_THE_PLAN }}
+            </p>
+          </div>
+          <img class="mt-3" src="assets/images/MenuPlanIcon.png" />
+          <div class="flex flex-col items-start mt-[33px] space-y-[25px]">
+            <div class="w-full flex items-center justify-between">
+              <p class="text-sm font-medium text-[#52596C] leading-[15.4px]">
+                {{ MAIN_PAGE_WORDS.MONTHLY }}
+              </p>
+              <p class="text-base font-normal leading-[22.4px] text-[#52596C]">
+                $100/ month
+              </p>
+            </div>
+            <div class="w-full flex items-center justify-between">
+              <p class="text-sm font-medium text-[#52596C] leading-[15.4px]">
+                {{ MAIN_PAGE_WORDS.START_DATE }}
+              </p>
+              <p class="text-base font-normal leading-[22.4px] text-[#52596C]">
+                December 11, 2022
+              </p>
+            </div>
+            <div class="w-full flex items-center justify-between">
+              <p class="text-sm font-medium text-[#52596C] leading-[15.4px]">
+                {{ MAIN_PAGE_WORDS.START_DATE }}
+              </p>
+              <p class="text-base font-normal leading-[22.4px] text-[#52596C]">
+                December 11, 2023
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </p-sidebar>
+  </aside>
+
+  <div
+    [ngStyle]="{ 'padding-left': sidenavVisible ? '400px' : '45px' }"
+    class="w-full"
+  >
+    <router-outlet></router-outlet>
+  </div>
+</section>

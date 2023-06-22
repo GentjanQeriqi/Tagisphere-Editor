@@ -1,0 +1,55 @@
+<form [formGroup]="csvForm" >
+
+    <!-- <label
+    for="images"
+    class="border border-dashed rounded-md border-[#CDD6E8] flex flex-col items-center justify-center bg-[#EEF2FA] lg:h-[195px] w-1/2 mx-auto mt-4"
+    >
+    <span class="text-[#0077F2] text-sm font-semibold leading-[19.6px]">
+      Upload Here</span
+    >
+    <input type="file" id="images" accept=".csv, .CSV" formControlName="file" required hidden />
+    </label> -->
+    
+    <app-file-upload style="width: 100%;" formControlName="file" accept=".csv, .CSV" [multiple]="false">
+    </app-file-upload>
+    
+    <div class="flex flex-row justify-between items-center pt-5">
+    <span class="text-sm text-[#4F5974] font-semibold leading-[19.6px]"
+      >CSV delimiter</span
+    >
+        <p-dropdown appendTo="body" [options]="csvDelimiterOptions" formControlName="delimiter"   placeholder="Select the CSV delimiter"  ></p-dropdown>
+    </div>
+    
+    <!-- <p class="text-sm text-[#4F5974] font-normal leading-[19.6px] mt-3">
+    CSV delimiter
+    </p>  -->
+    <!-- <div class="flex items-center space-x-4 mt-6">
+    <p-checkbox></p-checkbox>
+    <p class="text-base text-[#191A1C] font-normal leading-[22.4px]">
+      Remove duplicate tags
+    </p>
+    </div>
+    <p class="text-sm text-[#4F5974] font-normal leading-[19.6px] mt-3">
+    We will remove duplicated tags from your .CSV file. Or you can do it by
+    yourself in Tag Editor
+    </p> -->
+    <div class="flex items-center justify-center space-x-8 mt-10">
+
+      <ng-container *ngIf="csvFile"> 
+        <p-button label="Update TAGS" (onClick)="onClose()" styleClass="p-button-text p-button-secondary"></p-button>
+
+        <p-button label="Update file" [disabled]="!csvForm.dirty  || !csvForm.valid"
+          (onClick)="onUpdateCsvFileInstance()"></p-button>
+      </ng-container>
+
+      <ng-container *ngIf="!csvFile">
+        <p-button label="Cancel" (onClick)="onClose()" styleClass="p-button-text p-button-secondary"></p-button>
+
+        <p-button label="Add Tags" [disabled]="!csvForm.dirty || !csvForm.valid"
+          (onClick)="onAddCsvFileInstance()"></p-button>
+      </ng-container>
+
+    </div>
+    <!-- (onClick)="showDialog()" -->
+    </form>
+    

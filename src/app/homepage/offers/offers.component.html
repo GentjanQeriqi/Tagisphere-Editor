@@ -1,0 +1,645 @@
+<section class="bg-[#F3F8FC]">
+  <div class="lg:py-[148px] py-[60px] flex flex-col items-center px-10">
+    <p
+      class="text-[#2478ED] font-semibold leading-8 text-lg montserrat tracking-widest"
+    >
+      {{ OFFERS_WORDS.SUBSCRIPTIONS }}
+    </p>
+    <p class="text-[32px] lg:text-[54px] leading-[60px] gilroy pb-4">
+      {{ OFFERS_WORDS.FLEXIBLE_OPTIONS }}
+    </p>
+    <p
+      class="text-base lg:text-xl text-gray-600 text-center leading-[24px] lg:leading-8"
+    >
+      {{ OFFERS_WORDS.FLEXIBLE_OPTIONS_DESCRIPTION }}
+    </p>
+  </div>
+
+  <div
+    class="px-[160px] flex flex-row xs:flex-wrap md:flex-nowrap gap-5 justify-center items-center pb-[122px]"
+    *ngIf="screenWidth > 700"
+  >
+    <div
+      class="max-w-[300px] bg-white rounded-[20px] pt-[59px] pb-[48px] transform transition duration-500 hover:scale-110 px-4"
+    >
+      <p class="font-bold text-[#0077F2] text-[26px] pb-4">Free</p>
+      <p class="pb-[58px] tracking-wide">
+        Start using the system for <strong>FREE</strong> today. Setup projects,
+        upload or create AR Tag content and let field users access those tags.
+      </p>
+      <p class="text-center font-bold text-[31px]">FREE</p>
+      <p class="text-center font-normal text-[#4F5974]">per month</p>
+      <p-divider></p-divider>
+      <div class="flex flex-col gap-3 pb-5">
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-bold text-[16px]">Shared Public Server</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-bold text-[16px]">25-50 Tags (Per Project)</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-bold text-[16px]">Limited Tag Lifetimes</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">Public Date Only</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">10 Public Visitors</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">No Private Users</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">1 Project of Each Type</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">Full Customization</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">Limited Admin Tools</p>
+        </div>
+      </div>
+      <button class="w-full justify-center" pButton>
+        <span class="p-2 font-bold text-xl">Select</span>
+      </button>
+    </div>
+    <div
+      class="max-w-[300px] bg-white rounded-[20px] pt-[59px] pb-[48px] blur transform transition duration-500 hover:scale-110 relative px-4"
+    >
+      <div
+        class="absolute bg-[#0077F2] top-0 h-8 w-full mx-auto left-0 right-0 rounded-t-[20px]"
+      ></div>
+      <p class="font-bold text-[#0077F2] text-[26px] pb-4">Free</p>
+      <p class="pb-[58px] tracking-wide">
+        Start using the system for <strong>FREE</strong> today. Setup projects,
+        upload or create AR Tag content and let field users access those tags.
+      </p>
+      <p class="text-center font-bold text-[31px]">FREE</p>
+      <p class="text-center font-normal text-[#4F5974]">per month</p>
+      <p-divider></p-divider>
+      <div class="flex flex-col gap-3 pb-5">
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-bold text-[16px]">Shared Public Server</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-bold text-[16px]">25-50 Tags (Per Project)</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-bold text-[16px]">Limited Tag Lifetimes</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">Public Date Only</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">10 Public Visitors</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">No Private Users</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">1 Project of Each Type</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">Full Customization</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">Limited Admin Tools</p>
+        </div>
+      </div>
+      <button class="w-full justify-center" pButton>
+        <span class="p-2 font-bold text-xl">Select</span>
+      </button>
+    </div>
+    <div
+      class="max-w-[300px] bg-white rounded-[20px] pt-[59px] pb-[48px] blur transform transition duration-500 hover:scale-110 px-4"
+    >
+      <p class="font-bold text-[#0077F2] text-[26px] pb-4">Free</p>
+      <p class="pb-[58px] tracking-wide">
+        Start using the system for <strong>FREE</strong> today. Setup projects,
+        upload or create AR Tag content and let field users access those tags.
+      </p>
+      <p class="text-center font-bold text-[31px]">FREE</p>
+      <p class="text-center font-normal text-[#4F5974]">per month</p>
+      <p-divider></p-divider>
+      <div class="flex flex-col gap-3 pb-5">
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-bold text-[16px]">Shared Public Server</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-bold text-[16px]">25-50 Tags (Per Project)</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-bold text-[16px]">Limited Tag Lifetimes</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">Public Date Only</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">10 Public Visitors</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">No Private Users</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">1 Project of Each Type</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">Full Customization</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">Limited Admin Tools</p>
+        </div>
+      </div>
+      <button class="w-full justify-center" pButton>
+        <span class="p-2 font-bold text-xl">Select</span>
+      </button>
+    </div>
+    <div
+      class="max-w-[300px] bg-white rounded-[20px] pt-[59px] pb-[48px] blur transform transition duration-500 hover:scale-110 px-4"
+    >
+      <p class="font-bold text-[#0077F2] text-[26px] pb-4">Free</p>
+      <p class="pb-[58px] tracking-wide">
+        Start using the system for <strong>FREE</strong> today. Setup projects,
+        upload or create AR Tag content and let field users access those tags.
+      </p>
+      <p class="text-center font-bold text-[31px]">FREE</p>
+      <p class="text-center font-normal text-[#4F5974]">per month</p>
+      <p-divider></p-divider>
+      <div class="flex flex-col gap-3 pb-5">
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-bold text-[16px]">Shared Public Server</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-bold text-[16px]">25-50 Tags (Per Project)</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-bold text-[16px]">Limited Tag Lifetimes</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">Public Date Only</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">10 Public Visitors</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">No Private Users</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">1 Project of Each Type</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">Full Customization</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">Limited Admin Tools</p>
+        </div>
+      </div>
+      <button class="w-full justify-center" pButton>
+        <span class="p-2 font-bold text-xl">Select</span>
+      </button>
+    </div>
+    <div
+      class="max-w-[300px] bg-white rounded-[20px] pt-[59px] pb-[48px] blur transform transition duration-500 hover:scale-110 px-4"
+    >
+      <p class="font-bold text-[#0077F2] text-[26px] pb-4">Free</p>
+      <p class="pb-[58px] tracking-wide">
+        Start using the system for <strong>FREE</strong> today. Setup projects,
+        upload or create AR Tag content and let field users access those tags.
+      </p>
+      <p class="text-center font-bold text-[31px]">FREE</p>
+      <p class="text-center font-normal text-[#4F5974]">per month</p>
+      <p-divider></p-divider>
+      <div class="flex flex-col gap-3 pb-5">
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-bold text-[16px]">Shared Public Server</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-bold text-[16px]">25-50 Tags (Per Project)</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-bold text-[16px]">Limited Tag Lifetimes</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">Public Date Only</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">10 Public Visitors</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">No Private Users</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">1 Project of Each Type</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">Full Customization</p>
+        </div>
+        <div class="flex flex-row items-center gap-5">
+          <i class="pi pi-check text-[#00CA81]"></i>
+          <p class="font-normal text-[16px]">Limited Admin Tools</p>
+        </div>
+      </div>
+      <button class="w-full justify-center" pButton>
+        <span class="p-2 font-bold text-xl">Select</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- MOBILE VIEW -->
+  <div class="flex flex-col mx-[14px] space-y-4" *ngIf="screenWidth <= 700">
+    <div class="px-[18px] bg-white rounded-2xl py-6 flex flex-col">
+      <p class="text-[#0077F2] font-bold">FREE</p>
+      <p class="mt-4 font-normal text-base">
+        Start using the system for <b>FREE</b> today. Setup projects, upload or
+        create AR Tag content and let field users access those tags.
+      </p>
+      <div class="flex flex-col items-center justify-center mt-8">
+        <p class="font-bold text-2xl">FREE</p>
+        <p class="text-sm text-[#4F5974] font-normal">per month</p>
+        <p
+          (click)="toggleShowDetailsFree()"
+          class="text-[#2B84FF] text-base font-medium my-5"
+        >
+          {{ showDetailsFree ? "Hide the details" : "Show the details" }}
+        </p>
+        <div *ngIf="showDetailsFree" class="flex flex-col gap-3 pb-5">
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-bold text-[16px]">Shared Public Server</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-bold text-[16px]">25-50 Tags (Per Project)</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-bold text-[16px]">Limited Tag Lifetimes</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">Public Date Only</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">10 Public Visitors</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">No Private Users</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">1 Project of Each Type</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">Full Customization</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">Limited Admin Tools</p>
+          </div>
+        </div>
+      </div>
+      <div class="h-0.5 bg-[#E1E7F3] mb-6"></div>
+      <button
+        pButton
+        class="mt-6 bg-[#2B84FF] text-white py-4 rounded-lg select-shadow font-semibold"
+      >
+        Select
+      </button>
+    </div>
+    <div>
+      <div class="w-full rounded-t-2xl text-center py-2 bg-[#0077F2]">
+        <p class="text-white text-sm">Most popular</p>
+      </div>
+      <div
+        class="px-[18px] bg-white rounded-x-2xl rounded-b-2xl py-6 flex flex-col border-[#2B84FF] border"
+      >
+        <div class="flex items-center space-x-3">
+          <img src="assets/images/Rectangle 795.png" />
+          <p class="text-[#0077F2] font-bold text-[22px]">Basic Service</p>
+        </div>
+        <p class="mt-4 font-normal text-base">
+          The Basic Level supports a private access and expands features and
+          capacity
+        </p>
+        <div class="flex flex-col items-center justify-center mt-8">
+          <p class="font-bold text-2xl">$20</p>
+          <p class="text-sm text-[#4F5974] font-normal px-24 text-center">
+            per month paid annually <b>$25</b> billed monthly
+          </p>
+          <p
+            (click)="toggleShowDetailsBasic()"
+            class="text-[#2B84FF] text-base font-medium my-5"
+          >
+            {{ showDetailsBasic ? "Hide the details" : "Show the details" }}
+          </p>
+          <div *ngIf="showDetailsBasic" class="flex flex-col gap-3 pb-5">
+            <div class="flex flex-row items-center gap-5">
+              <i class="pi pi-check text-[#00CA81]"></i>
+              <p class="font-bold text-[16px]">Shared Public Server</p>
+            </div>
+            <div class="flex flex-row items-center gap-5">
+              <i class="pi pi-check text-[#00CA81]"></i>
+              <p class="font-bold text-[16px]">25-50 Tags (Per Project)</p>
+            </div>
+            <div class="flex flex-row items-center gap-5">
+              <i class="pi pi-check text-[#00CA81]"></i>
+              <p class="font-bold text-[16px]">Limited Tag Lifetimes</p>
+            </div>
+            <div class="flex flex-row items-center gap-5">
+              <i class="pi pi-check text-[#00CA81]"></i>
+              <p class="font-normal text-[16px]">Public Date Only</p>
+            </div>
+            <div class="flex flex-row items-center gap-5">
+              <i class="pi pi-check text-[#00CA81]"></i>
+              <p class="font-normal text-[16px]">10 Public Visitors</p>
+            </div>
+            <div class="flex flex-row items-center gap-5">
+              <i class="pi pi-check text-[#00CA81]"></i>
+              <p class="font-normal text-[16px]">No Private Users</p>
+            </div>
+            <div class="flex flex-row items-center gap-5">
+              <i class="pi pi-check text-[#00CA81]"></i>
+              <p class="font-normal text-[16px]">1 Project of Each Type</p>
+            </div>
+            <div class="flex flex-row items-center gap-5">
+              <i class="pi pi-check text-[#00CA81]"></i>
+              <p class="font-normal text-[16px]">Full Customization</p>
+            </div>
+            <div class="flex flex-row items-center gap-5">
+              <i class="pi pi-check text-[#00CA81]"></i>
+              <p class="font-normal text-[16px]">Limited Admin Tools</p>
+            </div>
+          </div>
+        </div>
+        <div class="h-0.5 bg-[#E1E7F3] mb-6"></div>
+        <button
+          pButton
+          class="mt-6 bg-[#2B84FF] text-white py-4 rounded-lg select-shadow font-semibold"
+        >
+          Select
+        </button>
+      </div>
+    </div>
+    <div class="px-[18px] bg-white rounded-2xl py-6 flex flex-col">
+      <div class="flex items-center space-x-3">
+        <div class="relative">
+          <img class="relative z-10" src="assets/images/Rectangle 792.png" />
+          <img class="absolute top-1" src="assets/images/Rectangle 791.png" />
+        </div>
+        <p class="text-[#0077F2] font-bold text-[22px]">Pro Service</p>
+      </div>
+      <p class="mt-4 font-normal text-base">
+        The Pro Level of expands on the Basic level of service with even more
+        capacity
+      </p>
+      <div class="flex flex-col items-center justify-center mt-8">
+        <p class="font-bold text-2xl">$100</p>
+        <p class="text-sm text-[#4F5974] font-normal px-24 text-center">
+          per month paid annually <b>$125</b> billed monthly
+        </p>
+        <p
+          (click)="toggleShowDetailsPro()"
+          class="text-[#2B84FF] text-base font-medium my-5"
+        >
+          {{ showDetailsPro ? "Hide the details" : "Show the details" }}
+        </p>
+        <div *ngIf="showDetailsPro" class="flex flex-col gap-3 pb-5">
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-bold text-[16px]">Shared Public Server</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-bold text-[16px]">25-50 Tags (Per Project)</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-bold text-[16px]">Limited Tag Lifetimes</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">Public Date Only</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">10 Public Visitors</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">No Private Users</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">1 Project of Each Type</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">Full Customization</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">Limited Admin Tools</p>
+          </div>
+        </div>
+      </div>
+      <div class="h-0.5 bg-[#E1E7F3] mb-6"></div>
+      <button
+        pButton
+        class="mt-6 bg-[#2B84FF] text-white py-4 rounded-lg select-shadow font-semibold"
+      >
+        Select
+      </button>
+    </div>
+    <div class="px-[18px] bg-white rounded-2xl py-6 flex flex-col">
+      <div class="flex items-center space-x-3">
+        <div class="relative">
+          <img class="relative z-10" src="assets/images/Rectangle 769.png" />
+          <img class="absolute top-2" src="assets/images/Rectangle 768.png" />
+          <img class="absolute top-1" src="assets/images/Rectangle 770.png" />
+        </div>
+        <p class="text-[#0077F2] font-bold text-[22px]">Dedicated Service</p>
+      </div>
+      <p class="mt-4 font-normal text-base">
+        The Dedicated Level of Service expands on the Pro Level with even more
+        capacity and your own dedicated Server
+      </p>
+      <div class="flex flex-col items-center justify-center mt-8">
+        <p class="font-bold text-2xl">$250</p>
+        <p class="text-sm text-[#4F5974] font-normal px-24 text-center">
+          per month paid annually <b>$300</b> billed monthly
+        </p>
+        <p
+          (click)="toggleShowDetailsDedicative()"
+          class="text-[#2B84FF] text-base font-medium my-5"
+        >
+          {{ showDetailsDedicative ? "Hide the details" : "Show the details" }}
+        </p>
+        <div *ngIf="showDetailsDedicative" class="flex flex-col gap-3 pb-5">
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-bold text-[16px]">Shared Public Server</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-bold text-[16px]">25-50 Tags (Per Project)</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-bold text-[16px]">Limited Tag Lifetimes</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">Public Date Only</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">10 Public Visitors</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">No Private Users</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">1 Project of Each Type</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">Full Customization</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">Limited Admin Tools</p>
+          </div>
+        </div>
+      </div>
+      <div class="h-0.5 bg-[#E1E7F3] mb-6"></div>
+      <button
+        pButton
+        class="mt-6 bg-[#2B84FF] text-white py-4 rounded-lg select-shadow font-semibold"
+      >
+        Select
+      </button>
+    </div>
+    <div class="px-[18px] bg-white rounded-2xl py-6 flex flex-col">
+      <div class="flex items-center space-x-3">
+        <div class="relative">
+          <img class="relative z-10" src="assets/images/Rectangle 777.png" />
+          <img class="absolute top-1" src="assets/images/Rectangle 776.png" />
+          <img class="absolute top-2" src="assets/images/Rectangle 785.png" />
+          <img class="absolute top-3" src="assets/images/Rectangle 775.png" />
+        </div>
+        <p class="text-[#0077F2] font-bold text-[22px]">Self-Hosted Service</p>
+      </div>
+      <p class="mt-4 font-normal text-base">
+        The Self-Hosted leve of Service expands on the Dedicated Level of
+        Service with even more capacity and a server stack that you run and
+        control
+      </p>
+      <div class="flex flex-col items-center justify-center mt-8">
+        <p class="font-bold text-2xl">$500</p>
+        <p class="text-sm text-[#4F5974] font-normal px-24 text-center">
+          per month paid annually <b>$600</b> billed monthly
+        </p>
+        <p
+          (click)="toggleSelfHosted()"
+          class="text-[#2B84FF] text-base font-medium my-5"
+        >
+          {{ showSelfHosted ? "Hide the details" : "Show the details" }}
+        </p>
+        <div *ngIf="showSelfHosted" class="flex flex-col gap-3 pb-5">
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-bold text-[16px]">Shared Public Server</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-bold text-[16px]">25-50 Tags (Per Project)</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-bold text-[16px]">Limited Tag Lifetimes</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">Public Date Only</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">10 Public Visitors</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">No Private Users</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">1 Project of Each Type</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">Full Customization</p>
+          </div>
+          <div class="flex flex-row items-center gap-5">
+            <i class="pi pi-check text-[#00CA81]"></i>
+            <p class="font-normal text-[16px]">Limited Admin Tools</p>
+          </div>
+        </div>
+      </div>
+      <div class="h-0.5 bg-[#E1E7F3] mb-6"></div>
+      <button
+        pButton
+        class="mt-6 bg-[#2B84FF] text-white py-4 rounded-lg select-shadow font-semibold"
+      >
+        Select
+      </button>
+    </div>
+  </div>
+</section>

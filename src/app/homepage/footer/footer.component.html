@@ -1,0 +1,57 @@
+<section class="bg-[#191A1C] lg:mt-0 mt-[180px]">
+  <div
+    class="lg:pt-[214px] lg:pb-[80px] lg:px-[160px] px-[100px] pt-[40px] pb-[60px] flex lg:flex-row flex-col lg:justify-between"
+  >
+    <div class="flex flex-col gap-2">
+      <div [ngClass]="{ 'mb-6': this.screenWidth <= 428 }">
+        <p class="text-white font-sans lg:text-[28.4116px]">The</p>
+        <p class="text-white font-serif text-4xl lg:text-6xl">Tagisphere</p>
+        <p class="text-white lg:text-3xl">AR Platform</p>
+      </div>
+      <div
+        *ngIf="this.screenWidth <= 428"
+        class="flex flex-col items-center space-y-[22px]"
+      >
+        <button pButton>
+          <span routerLink="auth" class="px-5 font-semibold box">{{
+            FOOTER_WORDS.GETS_STARTED
+          }}</span>
+        </button>
+        <span class="px-5 font-semibold text-white cursor-pointer">{{
+          FOOTER_WORDS.LEGACY_POLICY
+        }}</span>
+      </div>
+      <div class="flex flex-row space-x-10 mt-[60px] cursor-pointer">
+        <i class="pi pi-facebook" style="font-size: 2rem; color: white"></i>
+        <i class="pi pi-twitter" style="font-size: 2rem; color: white"></i>
+        <i class="pi pi-instagram" style="font-size: 2rem; color: white"></i>
+        <i class="pi pi-linkedin" style="font-size: 2rem; color: white"></i>
+      </div>
+    </div>
+    <div class="flex flex-col gap-5" *ngIf="this.screenWidth > 428">
+      <div class="flex gap-5 items-center justify-end">
+        <div class="flex items-center justify-center space-x-4">
+          <button pButton>
+            <span class="px-5 font-semibold">{{
+              FOOTER_WORDS.GETS_STARTED
+            }}</span>
+          </button>
+          <span
+            class="px-5 font-semibold text-white cursor-pointer whitespace-nowrap"
+            >{{ FOOTER_WORDS.LEGACY_POLICY }}</span
+          >
+        </div>
+      </div>
+      <div class="mt-[175px]">
+        <div
+          class="flex flex-row font-light text-lg text-white gap-10 cursor-pointer"
+        >
+          <a>{{ FOOTER_WORDS.HOME }}</a>
+          <a>{{ FOOTER_WORDS.SUBSCRIBERS }}</a>
+          <a>{{ FOOTER_WORDS.COMPANY }}</a>
+          <a>{{ FOOTER_WORDS.CONTANCT }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

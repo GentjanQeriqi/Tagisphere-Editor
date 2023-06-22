@@ -1,0 +1,64 @@
+<div class="grid grid-cols-2 gap-5 px-[98px] cursor-pointer" *ngIf="!surveyorsDialog">
+  <div class="p-6 bg-[#83DF21] border py-[68px] border-gray-200 rounded-2xl shadow flex justify-center">
+    <span class="text-white font-[600] text-lg">Mapper</span>
+  </div>
+  <div class="max-w-sm p-6 bg-[#ED3C51] border py-[68px] border-gray-200 rounded-2xl shadow flex justify-center">
+    <span class="text-white font-[600] text-lg">CAD</span>
+  </div>
+  <div (click)="selectProject('surveyors')"
+    class="max-w-sm p-6 bg-[#FA983E] border py-[68px] border-gray-200 rounded-2xl shadow flex justify-center">
+    <span class="text-white font-[600] text-lg">Surveyors</span>
+  </div>
+  <div class="max-w-sm p-6 bg-[#1E7EE3] border py-[68px] border-gray-200 rounded-2xl shadow flex justify-center">
+    <span class="text-white font-[600] text-lg">ARC Gis</span>
+  </div>
+</div>
+<div class="p-6 mt-10 bg-gray-200 border w-full font-normal border-gray-200 rounded-lg shadow" *ngIf="!surveyorsDialog">
+  <ol class="flex flex-col gap-4">
+    <li>1. Mapper. Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+    <li>2. CAD. Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+    <li>
+      3. Surveyors. Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    </li>
+    <li>4. ARC Gis. Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+  </ol>
+</div>
+
+<form [formGroup]="surveyorForm">
+  <div class="flex flex-col w-full" *ngIf="surveyorsDialog">
+    <div class="flex items-center mb-5 space-x-3">
+      <img (click)="goBack()" src="assets/images/LeftArrow.png" />
+      <h1 class="text-2xl font-bold">Surveyors toolbox</h1>
+    </div>
+    <div class="p-6 bg-white border w-full font-normal border-gray-200 rounded-lg shadow">
+      <div class="flex flex-row justify-between items-center pt-5">
+        <span class="text-sm text-[#4F5974] font-semibold leading-[19.6px]">Name</span>
+        <input class="w-[70%]" formControlName="name" name="name" id="name" type="text" pInputText />
+      </div>
+
+
+      <!-- <div class="flex flex-row justify-between pt-5">
+        <span class="text-sm text-[#4F5974] font-semibold leading-[19.6px]">Organization</span>
+        <ng-container *ngIf="organisations$|async as organisations">
+          <p-dropdown panelStyleClass="w-[70%]" appendTo="body" [options]="organisations" formControlName="organization"
+            placeholder="Select the organisation" optionLabel="name" optionValue="id"></p-dropdown>
+        </ng-container>
+
+      </div> -->
+
+      <div class="text-sm text-red-300 mt-4 flex justify-end" *ngIf="
+          surveyorForm.get('name')?.hasError('required') && surveyorForm.dirty
+        ">
+        Name cannot be empty!
+      </div>
+      <div class="flex flex-row justify-between pt-5">
+        <span class="text-sm text-[#4F5974] font-semibold leading-[19.6px]">Description</span>
+        <textarea class="w-[70%]" id="description" name="description" formControlName="description" rows="4" cols="30"
+          pInputTextarea></textarea>
+      </div>
+
+
+    </div>
+    <p-button [disabled]="surveyorForm.invalid" [style]="{ marginTop: '16px' }" (click)="onCreateProjectInstance()" label="Create"></p-button>
+  </div>
+</form>

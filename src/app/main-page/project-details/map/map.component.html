@@ -1,0 +1,621 @@
+<div
+  class="flex items-center pb-3 mt-4"
+  [ngStyle]="
+    (sidenavService.$collapsed | async)
+      ? { position: 'absolute', top: '15px' }
+      : {}
+  "
+>
+  <p-button
+    routerLink="/main/dashboard"
+    icon="pi pi-arrow-left"
+    styleClass="p-button-rounded p-button-text"
+  ></p-button>
+  <h1 class="text-black text-[32px] gilroy ml-[18px] mr-6">
+    {{ projectDetails.name }}
+  </h1>
+  <p-button
+    [style]="{ width: '99px', height: '48px' }"
+    label="Create"
+  ></p-button>
+</div>
+
+<p-tabView>
+  <p-tabPanel header="Project Information">
+    <div class="grid grid-cols-3 gap-x-[18px]">
+      <div class="flex flex-col">
+        <div class="flex flex-col">
+          <div
+            class="bg-[#F6F8FC] flex items-center justify-between px-3 py-[10px] mb-4"
+          >
+            <p class="text-[#52596C] font-semibold text-sm leading-[19.6px]">
+              Project Information
+            </p>
+            <i class="pi pi-pencil"></i>
+          </div>
+          <div class="space-y-5 px-3">
+            <div class="flex items-center justify-between">
+              <p class="text-base font-normal leading-[22.4px] text-[#4F5974]">
+                Project Name:
+              </p>
+              <p
+                class="text-[18px] text-[#191A1C] leading-[25.2px] font-normal"
+              >
+                {{ projectDetails.name }}
+              </p>
+            </div>
+            <div class="flex items-center justify-between">
+              <p class="text-base font-normal leading-[22.4px] text-[#4F5974]">
+                Creator:
+              </p>
+              <p
+                class="text-[18px] text-[#2B84FF] leading-[25.2px] font-normal"
+              >
+                Darrel Williamson
+              </p>
+            </div>
+            <div class="flex items-center justify-between">
+              <p class="text-base font-normal leading-[22.4px] text-[#4F5974]">
+                Project created:
+              </p>
+              <p
+                class="text-[18px] text-[#191A1C] leading-[25.2px] font-normal"
+              >
+                28 October, 2022
+              </p>
+            </div>
+            <div class="flex items-center justify-between">
+              <p class="text-base font-normal leading-[22.4px] text-[#4F5974]">
+                Project updated:
+              </p>
+              <p
+                class="text-[18px] text-[#191A1C] leading-[25.2px] font-normal"
+              >
+                28 October, 2022
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col mt-[58px]">
+          <div class="flex flex-col">
+            <div
+              class="bg-[#F6F8FC] flex items-center justify-between px-3 py-[10px] mb-4 text-[#52596C] font-semibold text-sm leading-[19.6px]"
+            >
+              Users
+            </div>
+            <div class="space-y-5 px-3">
+              <div class="flex items-center justify-between">
+                <p
+                  class="text-base font-normal leading-[22.4px] text-[#4F5974]"
+                >
+                  Access to edit:
+                </p>
+
+                <p
+                  class="text-[18px] text-[#191A1C] leading-[25.2px] font-medium"
+                >
+                  Darrel Williamson
+                </p>
+              </div>
+              <p
+                class="text-[18px] text-[#2B84FF] leading-[25.2px] font-medium text-right"
+              >
+                Joe Black
+              </p>
+              <p
+                class="text-[18px] text-[#2B84FF] leading-[25.2px] font-medium text-right"
+              >
+                Regina Cooper
+              </p>
+              <p
+                class="text-[18px] text-[#2B84FF] leading-[25.2px] font-medium text-right"
+              >
+                Sami Khedira
+              </p>
+              <p
+                class="text-[18px] text-[#2B84FF] leading-[25.2px] font-medium text-right"
+              >
+                Zach Halifanakis
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <div
+          class="bg-[#F6F8FC] flex items-center justify-between px-3 py-[10px] mb-4 text-[#52596C] font-semibold text-sm leading-[19.6px]"
+        >
+          Description
+        </div>
+        <div class="px-3 leading-[25.2px] font-normal text-[#191A1C] h-full">
+          <div class="h-full">
+            <p class="h-full text-[18px]">
+              Following construction work, the island looks very different.
+              There are now many buildings throughout the west and central parts
+              of the island, as well as a road and some paths leading to the
+              accommodations. The accommodation buildings are distributed to the
+              east and west of the reception, positioned in circle formations.
+              There is a reception building right in the centre and a restaurant
+              on the northern shore. To the south, there is a pier where boats
+              can dock, and this is connected by road to the reception. There
+              are two maps showing the development of an island. The first map
+              shows the island prior to its development, and the second shows
+              the new tourist facilities that have been installed.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <div
+          class="bg-[#F6F8FC] flex items-center justify-between px-3 py-[10px] mb-4 text-[#52596C] font-semibold text-sm leading-[19.6px]"
+        >
+          Location
+        </div>
+        <img src="assets/images/Rectangle 2642.png" />
+      </div>
+    </div>
+  </p-tabPanel>
+  <p-tabPanel header="Tag Tools">
+    <div class="grid grid-cols-4 gap-6">
+      <div class="flex flex-col">
+        <div class="flex items-center space-x-5">
+          <p class="text-[22px] font-bold leading-[26.4px] text-[#191A1C]">
+            Tags
+          </p>
+          <p-button styleClass="p-button-rounded" [style]="{ padding: '12px' }">
+            <i class="pi pi-plus"></i>
+          </p-button>
+        </div>
+        <div class="flex flex-col border rounded-[13px] border-[#E1E7F3] mt-3">
+          <div
+            class="bg-[#F6F8FC] flex items-start justify-between pl-[23px] pr-[22px] py-4 rounded-t-[13px]"
+          >
+            <p>Label</p>
+            <p>Type</p>
+          </div>
+          <div class="mb-10 px-3">
+            <div
+              class="px-2 flex items-center justify-between py-[15px]"
+              [ngClass]="{
+                'bg-opacity-[0.1]': i === 2,
+                'bg-[#0077F2]': i === 2,
+                rounded: i === 2
+              }"
+              *ngFor="let tag of tags; let i = index"
+            >
+              <p
+                class="text-[18px] text-[#191A1C] font-normal leading-[25.2px]"
+                [ngStyle]="i === 2 ? { color: '#0077F2', fontWeight: 500 } : {}"
+              >
+                {{ tag.label }}
+              </p>
+              <p
+                class="text-base text-[#4F5974] font-normal leading-[22.4px]"
+                [ngStyle]="i === 2 ? { color: '#0077F2' } : {}"
+              >
+                {{ tag.type }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="flex flex-col col-span-2 w-[757px]">
+        <p class="text-[22px] font-bold leading-[26.4px] text-[#191A1C]">
+          Tag Editor
+        </p>
+        <div
+          class="border border-[#E1E7F3] rounded-[13px] mt-6 flex items-center"
+        >
+          <div class="px-6 pt-5 pb-8 flex flex-col w-[429px]">
+            <div class="flex items-center justify-between">
+              <p class="text-[18px] font-bold leading-[25.2px] text-[#191A1C]">
+                For Stewart
+              </p>
+              <p-button label="Save"> </p-button>
+            </div>
+            <div class="flex flex-col mt-9 gap-y-4">
+              <div class="flex items-center">
+                <p
+                  class="text-sm font-semibold leading-[19.6px] text-[#4F5974] mr-[51px]"
+                >
+                  Visibility
+                </p>
+                <div class="flex items-center space-x-[76px]">
+                  <p-checkbox
+                    [style]="{
+                      fontWeight: 400,
+                      fontSize: '18px',
+                      lineHeight: '25.2px',
+                      color: '#191A1C'
+                    }"
+                    label="Yes"
+                  ></p-checkbox>
+                  <p-checkbox
+                    [style]="{
+                      fontWeight: 400,
+                      fontSize: '18px',
+                      lineHeight: '25.2px',
+                      color: '#191A1C'
+                    }"
+                    label="No"
+                  ></p-checkbox>
+                </div>
+              </div>
+
+              <div class="flex items-center mt-6">
+                <p
+                  class="text-sm font-semibold leading-[19.6px] text-[#4F5974] mr-[74px]"
+                >
+                  Label
+                </p>
+                <input
+                  pInputText
+                  value="For Stewart"
+                  [style]="{ width: '257px' }"
+                />
+              </div>
+
+              <div class="flex items-center">
+                <p
+                  class="text-sm font-semibold leading-[19.6px] text-[#4F5974] mr-[49px]"
+                >
+                  Category
+                </p>
+                <p-dropdown [style]="{ width: '257px' }" [options]="categories">
+                </p-dropdown>
+              </div>
+
+              <div class="flex items-center">
+                <p
+                  class="text-sm font-semibold leading-[19.6px] text-[#4F5974] mr-[27px]"
+                >
+                  Subcategory
+                </p>
+                <p-dropdown
+                  [style]="{ width: '257px' }"
+                  [options]="subCategories"
+                >
+                </p-dropdown>
+              </div>
+
+              <div class="flex items-center">
+                <p
+                  class="text-sm font-semibold leading-[19.6px] text-[#4F5974] mr-[68px]"
+                >
+                  Offset
+                </p>
+                <div class="p-inputgroup">
+                  <input pInputText value="1244" />
+                  <p-dropdown
+                    class="p-inputgroup-addon"
+                    [style]="{
+                      padding: 0,
+                      background: 'transparent',
+                      border: 0
+                    }"
+                    [options]="offsetMetrics"
+                  ></p-dropdown>
+                </div>
+              </div>
+
+              <div class="flex items-center">
+                <p
+                  class="text-sm font-semibold leading-[19.6px] text-[#4F5974] mr-[80px]"
+                >
+                  Icon
+                </p>
+                <p-dropdown [style]="{ width: '257px' }" [options]="icons">
+                  <ng-template let-icon pTemplate="group">
+                    <div class="flex items-center">
+                      <img src="assets/images/MapPinIcon.png" />
+                      <p>{{ icon }}</p>
+                    </div>
+                  </ng-template>
+                </p-dropdown>
+              </div>
+
+              <div
+                class="flex items-center justify-end my-4 space-x-[58px] mr-8"
+              >
+                <div class="flex items-center">
+                  <p-checkbox inputId="menu"></p-checkbox>
+                  <label class="ml-2" for="menu">Menu</label>
+                </div>
+                <div class="flex items-center">
+                  <p-checkbox inputId="hyperlink"></p-checkbox>
+                  <label class="ml-2" for="hyperlink">Hyperlink</label>
+                </div>
+              </div>
+
+              <div class="flex items-center">
+                <p
+                  class="text-sm font-semibold leading-[19.6px] text-[#4F5974] mr-[46px]"
+                >
+                  Hyperlink
+                </p>
+                <input
+                  pInputText
+                  value="https://gustavus.edu/gribly/"
+                  [style]="{ width: '257px' }"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-[#F6F8FC] h-full pl-6 pt-8 pr-8 rounded-r-[13px] border-l-[#E1E7F3] border-l"
+          >
+            <div class="space-y-[34px]">
+              <div class="flex items-center">
+                <p
+                  class="text-sm text-[#4F5974] font-semibold leading-[19.6px] mr-[60px]"
+                >
+                  Type
+                </p>
+                <p
+                  class="text-base text-[#191A1C] font-normal leading-[22.4px] text-left"
+                >
+                  Point
+                </p>
+              </div>
+
+              <div class="flex items-center">
+                <p
+                  class="text-sm text-[#4F5974] font-semibold leading-[19.6px] mr-[34px]"
+                >
+                  Location
+                </p>
+                <p
+                  class="text-base text-[#191A1C] font-normal leading-[22.4px] text-left"
+                >
+                  111.9876, 200.123
+                </p>
+              </div>
+
+              <div class="flex items-center">
+                <p
+                  class="text-sm text-[#4F5974] font-semibold leading-[19.6px] mr-[48px]"
+                >
+                  Owner
+                </p>
+                <p
+                  class="text-base text-[#0077F2] font-medium leading-[22.4px] text-left"
+                >
+                  Darrel Williamson
+                </p>
+              </div>
+
+              <div class="flex items-center">
+                <p
+                  class="text-sm text-[#4F5974] font-semibold leading-[19.6px] mr-[42px]"
+                >
+                  Created
+                </p>
+                <p
+                  class="text-base text-[#191A1C] font-normal leading-[22.4px] text-left"
+                >
+                  August 2, 2022, 23:32 PM
+                </p>
+              </div>
+
+              <div class="flex items-center">
+                <p
+                  class="text-sm text-[#4F5974] font-semibold leading-[19.6px] mr-[38px]"
+                >
+                  Updated
+                </p>
+                <p
+                  class="text-base text-[#191A1C] font-normal leading-[22.4px] text-left"
+                >
+                  August 2, 2022, 23:32 PM
+                </p>
+              </div>
+
+              <div class="flex items-center">
+                <p
+                  class="text-sm text-[#4F5974] font-semibold leading-[19.6px] mr-[52px]"
+                >
+                  Score
+                </p>
+                <p
+                  class="text-base text-[#191A1C] font-normal leading-[22.4px] text-left"
+                >
+                  12
+                </p>
+              </div>
+
+              <div class="flex items-center">
+                <p
+                  class="text-sm text-[#4F5974] font-semibold leading-[19.6px] mr-[20px]"
+                >
+                  Visit Count
+                </p>
+                <p
+                  class="text-base text-[#191A1C] font-normal leading-[22.4px] text-left"
+                >
+                  3
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="mt-[50px] ml-8">
+        <img
+          class="object-cover h-full"
+          src="assets/images/Rectangle 2642.png"
+        />
+      </div>
+    </div>
+  </p-tabPanel>
+  <p-tabPanel header="Category Tools">
+    <div class="flex flex-col">
+      <div class="flex items-center">
+        <p class="text-[22px] font-bold leading-[26.4px] text-[#191A1C] mr-5">
+          Categories
+        </p>
+        <p-button
+          styleClass="p-button-rounded"
+          icon="pi pi-plus"
+          [style]="{ padding: '12px' }"
+        ></p-button>
+      </div>
+      <p-table [columns]="cols" [value]="tutorials" dataKey="vin">
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th *ngFor="let col of columns">
+              {{ col.header }}
+            </th>
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-expanded="expanded" let-column>
+          <tr>
+            <td>
+              <a href="#" [pRowToggler]="column">
+                <i
+                  [ngClass]="expanded ? 'pi pi-angle-up' : 'pi pi-angle-down'"
+                ></i>
+              </a>
+              {{ column.label }}
+            </td>
+            <td>
+              <p-badge
+                [style]="{
+                  width: '12px',
+                  height: '12px',
+                  padding: 0,
+                  minWidth: 0
+                }"
+                [severity]="column.color"
+              ></p-badge>
+            </td>
+            <td>
+              <img [src]="column.icon" />
+            </td>
+            <td>
+              <p-button
+                styleClass="p-button-text p-button-rounded p-button-secondary"
+                icon="pi pi-pencil"
+              ></p-button>
+              <p-button
+                styleClass="p-button-text p-button-rounded p-button-secondary"
+                icon="pi pi-trash"
+              ></p-button>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+          <tr>
+            <td [attr.colspan]="4">
+              <span>Subcategories</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p-timeline [value]="rowData.subcategories">
+                <ng-template pTemplate="content" let-data #1>
+                  {{ data.label }}
+                </ng-template>
+              </p-timeline>
+            </td>
+            <td>
+              <ng-template pTemplate="content" let-data #2>
+                {{ data.color }}
+              </ng-template>
+            </td>
+            <td>
+              <ng-template pTemplate="content" let-data #3>
+                {{ data.label }}
+              </ng-template>
+            </td>
+            <td></td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </p-tabPanel>
+  <p-tabPanel header="Icons Tools" [selected]="true">
+    <div class="flex space-x-6">
+      <div class="flex flex-col">
+        <div class="flex items-center justify-between">
+          <p class="text-[#191A1C] text-[22px] font-bold leading-[26.4px]">
+            Icons
+          </p>
+          <div
+            class="bg-[#CDD6E840] bg-opacity-25 flex items-center space-x-3 px-3 py-1 rounded"
+          >
+            <p class="text-sm font-normal text-[#4F5974] leading-[19.6px]">
+              Sort by:
+            </p>
+            <p-dropdown
+              class="icons-dropdown"
+              [style]="{ border: 0, background: 'transparent' }"
+              [options]="sortBy"
+            >
+            </p-dropdown>
+          </div>
+        </div>
+        <div class="border border-[#E1E7F3] rounded-[13px] p-6 mt-3">
+          <div class="grid grid-cols-7 gap-5">
+            <div
+              class="flex flex-1 flex-col items-center border border-[#E1E7F3] rounded-[11px] py-3 w-[126px]"
+              *ngFor="let icons of detailIcons"
+            >
+              <div class="h-[74px]">
+                <img class="px-[26px]" [src]="icons.icon" />
+              </div>
+              <p
+                class="text-base font-normal text-center leading-[22.4px] text-[#191A1C] mt-4"
+              >
+                {{ icons.name }}
+              </p>
+              <div class="flex items-center space-x-8 mt-4">
+                <p-button
+                  [style]="{ width: '24px', height: '24px' }"
+                  styleClass="p-button-text p-button-rounded p-button-secondary"
+                  icon="pi pi-pencil"
+                ></p-button>
+                <p-button
+                  [style]="{ width: '24px', height: '24px' }"
+                  styleClass="p-button-text p-button-rounded p-button-danger"
+                  icon="pi pi-trash"
+                ></p-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col h-full">
+        <p class="text-heading text-[22px] font-bold leading-[26.4px]">
+          Add New Icon
+        </p>
+        <div class="border border-[#E1E7F3] rounded-[13px] px-[26px] py-6 mt-5">
+          <div class="flex flex-col">
+            <label
+              class="text-[#4F5974] text-sm font-semibold leading-[19.6px] mb-2"
+              >Icon name</label
+            >
+            <input id="iconName" name="iconName" pInputText value="Point" />
+            <label
+              for="images"
+              class="border border-dashed rounded-md mb-8 border-[#CDD6E8] flex flex-col items-center justify-center bg-[#EEF2FA] w-[240px] mt-8 px-5 pt-[105px] pb-[87px] mx-[40px]"
+            >
+              <span
+                class="text-[#0077F2] text-sm font-semibold leading-[19.6px]"
+              >
+                Upload Here</span
+              >
+              <p
+                class="text-sm text-[#4F5974] font-semibold leading-[19.6px] opacity-[0.35] mt-2"
+              >
+                Max icon size 200 px. x 200px.
+              </p>
+              <input type="file" id="images" accept="image/*" required hidden />
+            </label>
+            <p-button label="Save"></p-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-tabPanel>
+</p-tabView>

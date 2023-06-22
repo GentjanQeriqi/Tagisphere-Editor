@@ -1,0 +1,12 @@
+::ng-deep .p-menubar{
+    flex-direction: row-reverse;
+    background-color: #EFF0FA;
+    border: none;
+    border-radius: 0;
+    font-weight: 500;
+    color: #65656F;
+    font-size: 1.125rem;
+}
+::ng-deep .p-menubar-root-list{
+    flex-wrap: nowrap !important;
+}

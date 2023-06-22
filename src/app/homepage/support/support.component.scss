@@ -1,0 +1,102 @@
+::ng-deep .p-accordion-header-link{
+    flex-direction: row-reverse !important;
+    justify-content: space-between !important;
+}
+::ng-deep .p-accordion .p-accordion-header:not(.p-disabled).p-highlight:hover .p-accordion-header-link{
+    font-family: 'Gilroy-Bold', sans-serif;
+    background-color: transparent;
+    border-color:  transparent;
+}
+::ng-deep .p-accordion .p-accordion-header:not(.p-disabled).p-highlight:hover .p-accordion-header-link{
+    font-family: 'Gilroy-Bold', sans-serif;
+    border-color: transparent;
+    background: transparent;
+}
+
+::ng-deep .p-accordion .p-accordion-header:not(.p-disabled).p-highlight:hover .p-accordion-header-link{
+    font-family: 'Gilroy-Bold', sans-serif;
+    color: white;
+}
+
+::ng-deep .p-accordion .p-accordion-header:not(.p-disabled).p-highlight .p-accordion-header-link{
+    font-family: 'Gilroy-Bold', sans-serif;
+    background-color: transparent;
+    border-color: transparent;
+    color:white
+}
+
+::ng-deep .p-accordion .p-accordion-header:not(.p-highlight):not(.p-disabled):hover .p-accordion-header-link{
+    font-family: 'Gilroy-Bold', sans-serif;
+    background: #e9ecef00;
+    border-color: #dee2e605;
+    color: white;
+}
+
+::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link{
+    font-family: 'Gilroy-Bold', sans-serif;
+    text-align: left;
+    border-color: transparent;
+    background-color: transparent;
+    color:white
+}
+
+::ng-deep .p-accordion .p-accordion-content{
+    font-family: 'Poppins';
+    background-color: transparent;
+    color:white;
+    border: none;
+}
+
+::ng-deep .p-accordion .p-accordion-header:not(.p-disabled) .p-accordion-header-link:focus{
+    box-shadow: none;
+}
+
+::ng-deep .p-accordion-header-text {
+    font-family: 'Gilroy-Bold', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+}
+
+@media only screen and (min-width: 700px) {
+    ::ng-deep .p-accordion-header-text {
+        font-family: 'Gilroy-Bold', sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        color: white;
+    }
+}
+
+
+.accordion {
+    border-bottom: 1px solid #629DFF;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .accordion-header {
+    background-color: transparent;
+    font-family: 'Gilroy-Bold', sans-serif;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .accordion-body {
+    font-family: 'Poppins';
+    text-align: left;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: white;
+    padding: 10px;
+    display: none;
+  }
+
+  .accordion-body.active {
+    display: block;
+  }

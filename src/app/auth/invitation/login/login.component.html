@@ -1,0 +1,71 @@
+<form [formGroup]="invitationForm">
+  <div class="w-full lg:mt-[140px]">
+    <div
+      class="flex flex-col lg:w-[848px] xs:px-10 lg:px-[220px] mx-auto xs:rounded-t-[28px] xs:border-t lg:border-0 xs:bg-white xs:pb-12"
+    >
+      <div class="flex flex-col items-center">
+        <p
+          class="text-[#21232E] xs:text-[32px] xs:leading-[35.2px] lg:text-5xl font-bold lg:leading-[53px] mb-[14px] xs:mt-10"
+        >
+          {{ LOGIN_WORDS.LOG_IN }}
+        </p>
+        <p
+          class="text-[#666771] xs:text-base xs:leading-[22.4px] lg:text-[20px] font-normal lg:leading-7 mb-12"
+        >
+          {{ LOGIN_WORDS.SIGN_IN }}
+        </p>
+      </div>
+      <div class="flex flex-col w-full space-y-5">
+        <div class="flex flex-col">
+          <!-- <div class="flex flex-col pb-4">
+            <label
+              class="text-[#21232E] xs:text-sm lg:text-base leading-[22px] font-semibold mix-blend-normal opacity-[0.35] mb-1"
+              htmlFor="username"
+              >Username</label
+            >
+
+            <input formControlName="username" id="username" pInputText />
+          </div> -->
+          <div class="flex flex-col">
+            <label
+              class="text-[#21232E] xs:text-sm lg:text-base leading-[22px] font-semibold mix-blend-normal opacity-[0.35] mb-1"
+              htmlFor="email"
+              >{{ LOGIN_WORDS.EMAIL }}</label
+            >
+            <input formControlName="email" id="email" pInputText />
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <label
+            class="text-[#21232E] xs:text-sm lg:text-base leading-[22px] font-semibold mix-blend-normal opacity-[0.35] mb-1"
+            htmlFor="password"
+            >{{ LOGIN_WORDS.PASSWORD }}</label
+          >
+          <span class="p-input-icon-right">
+            <i (click)="hide = !hide" class="pi pi-eye"></i>
+            <input
+              formControlName="password"
+              id="password"
+              class="w-full"
+              [type]="hide ? 'password' : 'text'"
+              pInputText
+            />
+          </span>
+        </div>
+      </div>
+      <a
+        routerLink="../forgot-password"
+        class="text-[#2B84FF] mt-[10px] font-normal text-base leading-[22.4px] text-right"
+      >
+        {{ LOGIN_WORDS.FORGOT_PASSWORD }}
+      </a>
+      <div class="w-full mt-[14px]">
+        <p-button
+          [style]="{ width: '100%' }"
+          (click)="submitForm()"
+          [label]="LOGIN_WORDS.LOG_IN"
+        ></p-button>
+      </div>
+    </div>
+  </div>
+</form>

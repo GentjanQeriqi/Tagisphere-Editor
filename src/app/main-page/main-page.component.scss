@@ -1,0 +1,39 @@
+::ng-deep .p-sidebar {
+    background-color: #f6f8fc;
+  }
+  
+  ::ng-deep .p-sidebar .p-sidebar-content {
+    padding: 0;
+  }
+  
+  .gilroy {
+    font-family: "Gilroy-Bold", sans-serif;
+  }
+  
+  ::ng-deep .p-button {
+    width: 100%;
+  }
+  
+  ::ng-deep .p-button > button {
+    display: flex;
+  }
+  
+  ::ng-deep .p-avatar > img {
+    border-radius: 7px;
+  }
+
+  .container{
+    display: flex;
+ 
+   }
+   .container .main-body{
+    width: 100%;
+   }
+   .container aside{
+     width: 0;
+     overflow-y: auto;
+     transition: all 0.5s;
+     background-color: yellow;
+     width: 380px;
+   }
+   /*Im using hover event to expand sidebar for example, you can use JS to handle click event*/

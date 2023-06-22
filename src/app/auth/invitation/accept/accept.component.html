@@ -1,0 +1,73 @@
+<div class="w-full mx-auto mt-[250px]" *ngIf="!isLoggedIn">
+  <div class="flex flex-col items-center space-y-5">
+    <p class="text-2xl font-medium text-gray-900">
+      Welcome to Tagisphere.
+    </p>
+    <p class="text-2xl font-medium text-gray-900">
+
+      Create new account in order to accept the invitation
+    </p>
+    <form [formGroup]="invitationRegisterForm">
+      <div class="flex flex-col gap-6">
+
+
+
+        <div class="p-field">
+          <span class="p-input-icon-right">
+            <input type="text" pInputText formControlName="email" placeholder="Email" />
+          </span>
+        </div>
+        <div class="p-field">
+          <span class="p-input-icon-right">
+            <i (click)="showPass()" class="cursor-pointer pi pi-eye"></i>
+            <input [type]="showPassword ? 'text' : 'password'" pInputText formControlName="password1" placeholder="Password" />
+          </span>
+        </div>
+        <div class="p-field">
+          <span class="p-input-icon-right">
+            <i (click)="showPass()" class="cursor-pointer pi pi-eye"></i>
+            <input  [type]="showPassword ? 'text' : 'password'" pInputText formControlName="password2" placeholder="Repeat Password" />
+          </span>
+        </div>
+      </div>
+    </form>
+    <p-button (onClick)="register()" label="Register"></p-button>
+    <p> OR </p>
+    <p-button (onClick)="goBackToLogin()" label="Go to login page" class="text-xl font-bold text-gray-900">
+    </p-button>
+  </div>
+</div>
+
+<div class="w-full mx-auto mt-[250px]" *ngIf="isLoggedIn && !hasError">
+  <div class="flex flex-col items-center space-y-4">
+    <p class="text-2xl text-gray-900 font-normal">
+      You have been invited to
+      <b>{{ invitedOrganization.organization_info?.name }}</b>
+      as an <b>{{ invitedOrganization?.role }}</b>
+    </p>
+    <p-button (onClick)="acceptInvitation()" label="Accept Invitation"></p-button>
+  </div>
+</div>
+
+<div class="w-full mx-auto mt-[250px]" *ngIf="hasError">
+  <div class="flex flex-col items-center space-y-4">
+    <p class="text-2xl text-gray-900 font-normal">
+      Something went wrong! Please try again later.
+    </p>
+    <p class="text-lg text-gray-900 font-normal">{{ errorMessage }}</p>
+    <p-button (onClick)="goBackToLogin()" [label]="isLoggedIn ? 'Back To Main Page' : 'Back To Login'"></p-button>
+  </div>
+</div>
+<!-- 
+<div class="w-full mx-auto mt-[250px]" *ngIf="!userExists && !hasError">
+  <div class="flex flex-col items-center space-y-4">
+    <p class="text-2xl text-gray-900 font-normal">
+      Something went wrong! Please try again later.
+    </p>
+    <p class="text-lg text-gray-900 font-normal">{{ errorMessage }}</p>
+    <p-button
+      (onClick)="goToRegister()"
+      [label]="isLoggedIn ? 'Back To Main Page' : 'Back To Login'"
+    ></p-button>
+  </div>
+</div> -->

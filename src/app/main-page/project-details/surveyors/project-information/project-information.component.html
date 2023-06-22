@@ -1,0 +1,168 @@
+<div class="flex flex-row justify-between pl-5 pr-[45px] gap-[24px] pb-[55px] mt-[22px]">
+  <ng-container *ngIf="project$ | async as Project">
+    <div class="flex flex-col w-[40%]">
+      <form [formGroup]="projectForm">
+        <div>
+          <div class="p-6 bg-white border w-full font-normal border-gray-200 rounded-lg">
+            <div class="flex flex-row justify-between items-center">
+              <span class="text-[18px] text-[#191A1C] font-bold">Project Details</span>
+            </div>
+            <div class="flex flex-row justify-between items-center pt-5">
+              <span class="text-sm text-[#4F5974] font-semibold leading-[19.6px]">Name</span>
+              <input id="name" name="name" formControlName="name" class="w-[70%]" type="text" pInputText />
+            </div>
+
+            <div class="flex flex-row justify-between pt-5">
+              <span class="text-sm text-[#4F5974] font-semibold leading-[19.6px]">Description</span>
+              <textarea id="description" name="description" formControlName="description" class="w-[70%]" rows="4"
+                cols="30" pInputTextarea></textarea>
+            </div>
+          </div>
+
+          <div class="p-6 mt-6 bg-white border w-full font-normal border-gray-200 rounded-lg" >
+            <ng-container *ngIf="{csvFile : csvFile$|async} as context" >
+              <p-button [style]="{
+                height: '32px',
+                'padding-left': '20px',
+                'padding-right': '20px',
+                'padding-top': '6px',
+                'padding-bottom': '6px'
+              }" (click)="onHandleCsvFileInstance(context.csvFile)" [label]="context.csvFile?'Update .CSV file':'Upload .CSV file' "></p-button>
+          </ng-container>
+          </div>
+
+
+          <div class="p-6 mt-6 bg-white border w-full font-normal border-gray-200 rounded-lg">
+            <div class="flex flex-row justify-between items-center">
+              <span class="text-[18px] text-[#191A1C] font-bold">Users</span>
+              <p-button (onClick)="inviteUserDialog()" [style]="{
+              height: '42px',
+              'padding-left': '20px',
+              'padding-right': '20px',
+              'padding-top': '6px',
+              'padding-bottom': '6px'
+            }" label="Add User"></p-button>
+            </div>
+
+            <p-table [value]="Project.members" [tableStyle]="{ 'margin-top': '24px' }">
+              <ng-template pTemplate="header">
+                <tr class="flex items-center">
+                  <th [style]="{
+                  padding: 0,
+                  'padding-left': '1rem',
+                  'padding-bottom': '12px',
+                  background: 'white',
+                  border: '0px',
+                  color: '#4F5974',
+                  'font-size': '14px',
+                  'font-weight': '600'
+                }">
+                    <div class="flex items-center">
+                      <p class="mr-10">Name</p>
+                      <img src="assets/images/SortIcon.png" />
+                    </div>
+                  </th>
+                  <th [style]="{
+                  padding: 0,
+                  'padding-left': '1rem',
+                  'padding-bottom': '12px',
+                  background: 'white',
+                  border: 0,
+                  color: '#4F5974',
+                  'font-size': '14px',
+                  'font-weight': '600',
+                  marginLeft: '106px'
+                }">
+                    <div class="flex items-center justify-start">
+                      <p class="mr-[13px]">Role</p>
+                      <img src="assets/images/SortIcon.png" />
+                    </div>
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template class="w-full" pTemplate="body" let-user>
+                <div
+                  class="first:border last:border-x last:border-b border-b border-x first:rounded-t-lg last:rounded-b-lg px-4 py-3 border-[#CDD6E8]">
+                  <tr [style]="{
+                  border: '0',
+                  fontSize: '18px',
+                  fontWeight: 400,
+                  color: '#191A1C',
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
+                }">
+                    <td class="gilroy text-sm">
+                      {{ user.user }}
+                    </td>
+                    <td class="gilroy self-end text-sm">
+                      {{ user.role }}
+                      <p-button [style]="{ padding: 0, width: 'fit-content' }" styleClass="p-button-text">
+                        <img src="assets/images/3 dots icon.svg" />
+                      </p-button>
+                    </td>
+              
+                  </tr>
+                </div>
+              </ng-template>
+            </p-table>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+
+
+    <p-dialog header="Invite New User" [(visible)]="inviteUser" [modal]="true"
+      [style]="{ width: '368px', height: 'auto', zIndex: 1 }" [draggable]="false" [resizable]="false">
+      <form [formGroup]="inviteUserForm">
+        <div class="flex flex-col space-y-6 px-4 py-2">
+          <!-- <div class="flex flex-col">
+        <label
+          class="text-[#4F5974] text-sm font-semibold leading-[19.6px] mb-2"
+          >User Name</label
+        >
+        <input
+          id="userName"
+          name="userName"
+          pInputText
+          formControlName="userName"
+        />
+      </div> -->
+      <div class="flex flex-col">
+        <label
+          class="text-[#4F5974] text-sm font-semibold leading-[19.6px] mb-2"
+          >User Email</label
+        >
+        <p-dropdown
+        [options]="emails"
+        formControlName="email"
+        appendTo="body"
+        optionLabel="user"
+        [style]="{ width: '100%' }"
+      ></p-dropdown>
+      </div>
+          <div class="flex flex-col">
+            <label class="text-[#4F5974] text-sm font-semibold leading-[19.6px] mb-2">Role</label>
+            <p-dropdown [options]="roles" formControlName="role" dataKey="value" appendTo="body"
+                        optionLabel="display_name"
+              [style]="{ width: '100%' }"></p-dropdown>
+          </div>
+          <div class="flex items-center justify-center space-x-3">
+            <p-button (onClick)="inviteUserDialog()" label="Cancel"
+              styleClass="p-button-secondary p-button-text"></p-button>
+            <p-button (onClick)="onInviteMemberInstance(Project)" [disabled]="!inviteUserForm.valid || !inviteUserForm.value"
+              label="Create"></p-button>
+          </div>
+        </div>
+      </form>
+    </p-dialog>
+
+  </ng-container>
+
+  <div class="w-[70%] rounded-lg">
+    <div class="map" id="map" class="match-parent h-[70vh]"></div>
+  </div>
+</div>

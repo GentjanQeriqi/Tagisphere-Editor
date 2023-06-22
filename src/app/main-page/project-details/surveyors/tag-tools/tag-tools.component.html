@@ -1,0 +1,166 @@
+
+
+<div [class.overlay]="showOverlay"></div>
+<div class=" flex flex-row justify-between relative gap-4">
+    <div class="flex flex-col w-[30%]">
+      <div class="flex items-center space-x-5">
+        <p class="text-[22px] font-bold leading-[26.4px] text-[#191A1C]">
+          Tags
+        </p>
+        <p-button (onClick)="toggleOverlay()" styleClass="p-button-rounded" [style]="{ padding: '12px' }">
+          <i class="pi pi-plus"></i>
+        </p-button>
+      </div>
+      <div *ngIf="tags.length > 0; else noTags" class="flex flex-col border rounded-[13px] max-h-[90%] relative overflow-y-auto border-[#E1E7F3] mt-3">
+        <div
+          class="bg-[#F6F8FC] flex sticky items-start justify-between pl-[23px] pr-[22px] py-4 rounded-t-[13px]"
+        >
+          <p>Label</p>
+          <p>Type</p>
+        </div>
+        <div class="mb-10 px-3">
+          <div 
+           
+            *ngFor="let tag of tags; let i = index"
+          >
+          <div  class="px-2 flex items-center justify-between py-[15px] cursor-pointer hover:bg-blue-200" (click)="flyToLocation(tag)">
+            <p  
+              class="text-[18px] text-[#191A1C] font-normal leading-[25.2px]"
+            >
+              {{ tag.name }}
+            </p>
+       
+            <div (click)="setItem(tag, $event)">
+              <p-button  type="button" styleClass="p-button-link" icon="pi pi-ellipsis-v" (click)="menu.toggle($event)">
+              </p-button>
+          </div>    
+        </div>        
+          </div>
+        </div>
+      </div>
+      <ng-template #noTags>
+        <div class="flex justify-center">
+          <p>No Tags</p>
+        </div>
+      </ng-template>
+    </div>
+  
+    <div #focusedDiv class="w-[70%] rounded-lg relative"     [ngStyle]="{'cursor': showOverlay ? 'crosshair' : 'pointer'}" >
+        <div class="map1" id="map1" class="match-parent h-[70vh]"></div>
+        <p-button styleClass="p-button-rounded p-button-secondary p-button-text p-button-raised" icon="pi pi-compass" class="absolute bg-white rounded-full top-2 left-2" (click)="resetMapBounds()"></p-button>
+      </div>
+  </div>
+
+
+  <p-dialog 
+  header="Tag Editor"
+  [(visible)]="showDialog"
+  [modal]="true"
+  [style]="{ width: '630px', height: 'auto', zIndex: 1 }"
+  [draggable]="false"
+  [resizable]="false"
+>
+<form [formGroup]="tagForm">
+  <div class="flex flex-col">
+    <label class="text-[#21232E] xs:text-sm lg:text-base leading-[22px] font-semibold mix-blend-normal opacity-[0.35] mb-1" 
+           htmlFor="name">
+           Label
+    </label>
+    <input formControlName="name" id="name" pInputText />
+  </div>
+  <div class="flex flex-col">
+    <label class="text-[#21232E] xs:text-sm lg:text-base leading-[22px] font-semibold mix-blend-normal opacity-[0.35] mb-1" 
+           htmlFor="category">
+           Category
+    </label>
+    <p-dropdown [(ngModel)]="selectedCategory" (ngModelChange)="categoryChanged($event)"  [options]="categories" formControlName="category" optionValue="id" optionLabel="name"  placeholder="Select Category">
+      <ng-template let-category pTemplate="selectedIcon">
+          <div class="flex align-items-center gap-2">
+              <div>{{ category.name }}</div>
+          </div>
+      </ng-template>
+  </p-dropdown>
+  </div>
+
+  
+
+  <div class="flex flex-col">
+    <label class="text-[#21232E] xs:text-sm lg:text-base leading-[22px] font-semibold mix-blend-normal opacity-[0.35] mb-1" 
+           htmlFor="subcategory">
+           Subcategory
+    </label>
+    <p-dropdown [options]="subCategories" formControlName="additional_data" optionValue="id" optionLabel="name"  placeholder="Select Subcategory">
+      <ng-template let-subcategory pTemplate="selectedIcon">
+          <div class="flex align-items-center gap-2">
+              <div>{{ subcategory.name }}</div>
+          </div>
+      </ng-template>
+  </p-dropdown>
+  </div>
+
+  <div class="flex flex-col">
+    <label class="text-[#21232E] xs:text-sm lg:text-base leading-[22px] font-semibold mix-blend-normal opacity-[0.35] mb-1" 
+           htmlFor="offset">
+           Offset
+    </label>
+    <div class=" flex flex-row">
+    <input class="w-full" formControlName="offset" id="offset" pInputText />
+    <p-dropdown [options]="offsetType" optionLabel="name">
+      <ng-template let-offsetType pTemplate="offsetType">
+          <div class="flex align-items-center gap-2">
+              <div>{{ offsetType.name }}</div>
+          </div>
+      </ng-template>
+  </p-dropdown>
+  </div>
+  </div>
+
+  <div class="flex flex-col">
+    <label class="text-[#21232E] xs:text-sm lg:text-base leading-[22px] font-semibold mix-blend-normal opacity-[0.35] mb-1" 
+           htmlFor="icon">
+           Icon
+    </label>
+    <p-dropdown [options]="icons" [(ngModel)]="selectedIcon" formControlName="icon" optionValue="id" optionLabel="name"  placeholder="Select Icon">
+      <ng-template pTemplate="selectedIcon">
+        <!-- <div class="flex align-items-center gap-2" >
+            <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"  [class]="'flag flag-' + selectedIcon.name.toLowerCase()" style="width: 18px"/>
+            <div>{{ selectedIcon.name }}</div>
+        </div> -->
+    </ng-template>
+      <ng-template let-icon pTemplate="selectedIcon">
+          <div class="flex align-items-center gap-2">
+              <img [src]="icon.src" [class]="'flag flag-' + icon.name.toLowerCase()" style="width: 18px"/>
+              <div>{{ icon.name }}</div>
+          </div>
+      </ng-template>
+  </p-dropdown>
+  </div>
+  <!-- formArrayName="entries" put this when back-end is fixed -->
+  <div class="flex flex-col" formArrayName="entries" >
+    <div>
+      <div  class="flex flex-col" *ngFor="let entry of entries.controls; let i = index" [formGroupName]="i">
+        <label class="text-[#21232E] xs:text-sm lg:text-base leading-[22px] font-semibold mix-blend-normal opacity-[0.35] mb-1" 
+          htmlFor="entries">
+        Hyperlink
+        </label>
+
+        <input pInputText formControlName="hyperlink"  type="text">
+        <!-- Add other form controls here -->
+      </div>
+    
+ 
+  </div>
+  </div>
+  <div class="flex justify-center pt-4">
+  <p-button (onClick)="saveTag()"   [style]="{ padding: '12px', width:'auto' }">Save</p-button>
+</div>
+</form>
+</p-dialog>
+
+<p-menu #menu [popup]="true" [model]="items"></p-menu>
+
+
+<div class="card flex justify-content-center gap-2">
+  <p-confirmDialog [style]="{width: '30vw'}"></p-confirmDialog>
+</div>
+

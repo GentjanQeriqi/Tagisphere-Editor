@@ -1,0 +1,44 @@
+:host::ng-deep .p-tabview .p-tabview-panels {
+  padding-top: 32px;
+}
+
+:host::ng-deep .p-checkbox-box {
+  border-radius: 999px;
+}
+
+:host::ng-deep .p-inputgroup-addon {
+  padding: 0;
+}
+
+:host::ng-deep .p-inputtext {
+  font-size: 16px;
+  line-height: 22.4px;
+  font-weight: 400;
+  color: #191a1c;
+  border-color: #cdd6e8;
+}
+
+:host::ng-deep .p-accordion-toggle-icon {
+  display: none;
+}
+
+:host::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link {
+  padding-top: 11px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 0;
+  background-color: white;
+}
+
+:host::ng-deep .icons-dropdown {
+  div > span {
+    font-size: 14px;
+    padding: 0;
+    color: #4f5974;
+    line-height: 19.6px;
+  }
+
+  div > span:focus {
+    outline: none;
+  }
+}

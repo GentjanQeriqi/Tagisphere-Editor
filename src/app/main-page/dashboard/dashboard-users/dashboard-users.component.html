@@ -1,0 +1,233 @@
+<div class="flex items-center mt-5 mb-[21px]">
+  <p class="text-[26px] text-[#191A1C] leading-[28.6px] font-bold mr-6">
+    {{ MAIN_PAGE_WORDS.USERS }}
+  </p>
+  <p-button
+    (onClick)="inviteUserDialog()"
+    icon="pi pi-plus"
+    styleClass="p-button-rounded"
+    [style]="{ width: '42px', height: '42px' }"
+  ></p-button>
+</div>
+
+<div class="flex items-center justify-between mt-[22px] mb-[13px]">
+  <span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input
+      type="text"
+      pInputText
+      placeholder="Search..."
+      [style]="{ height: '48px', width: '420px', background: '#CDD6E840' }"
+    />
+  </span>
+  <p-button [style]="{ background: '#EBEEF5', border: '#EBEEF5' }">
+    <i class="pi pi-filter-fill text-[#6E7191]"></i>
+  </p-button>
+</div>
+
+<p-table
+  [value]="allMembers"
+  [(selection)]="selectedMember"
+  dataKey="code"
+  [tableStyle]="{
+    'min-width': '50rem',
+    border: '1px solid #E1E7F3',
+    'border-radius': '13px'
+  }"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 4rem">
+        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+      </th>
+      <th style="min-width: 200px">
+        <div class="flex items-center text-[#4F5974]">
+          {{ MAIN_PAGE_WORDS.USERS_HEADERS.USER_NAME }}
+          <img class="ml-[17px]" src="assets/images/SortIcon.png" />
+        </div>
+      </th>
+      <th style="min-width: 200px">
+        <div class="flex items-center text-[#4F5974]">
+          {{ MAIN_PAGE_WORDS.USERS_HEADERS.PROJECTS }}
+          <img class="ml-[17px]" src="assets/images/SortIcon.png" />
+        </div>
+      </th>
+      <th style="min-width: 200px">
+        <div class="flex items-center text-[#4F5974]">
+          {{ MAIN_PAGE_WORDS.USERS_HEADERS.ROLE }}
+          <img class="ml-[17px]" src="assets/images/SortIcon.png" />
+        </div>
+      </th>
+      <th style="min-width: 200px">
+        <div class="flex items-center text-[#4F5974]">
+          {{ MAIN_PAGE_WORDS.USERS_HEADERS.SUBSCRIPTION }}
+          <img class="ml-[17px]" src="assets/images/SortIcon.png" />
+        </div>
+      </th>
+      <th style="min-width: 200px">
+        <div class="flex items-center text-[#4F5974]">
+          {{ MAIN_PAGE_WORDS.USERS_HEADERS.END_OF_SUBSCRIPTION }}
+          <img class="ml-[17px]" src="assets/images/SortIcon.png" />
+        </div>
+      </th>
+      <th style="min-width: 200px">
+        <div class="flex items-center text-[#4F5974]">
+          {{ MAIN_PAGE_WORDS.USERS_HEADERS.INV_ACCEPTED }}
+          <img class="ml-[17px]" src="assets/images/SortIcon.png" />
+        </div>
+      </th>
+
+      <th></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-member>
+    <tr>
+      <td>
+        <p-tableCheckbox [value]="member"></p-tableCheckbox>
+      </td>
+      <td>{{ member.user || member.email}}</td>
+      <!-- <td class="text-ellipsis">{{ member.projects.join(", ") }}</td> -->
+      <td>{{'to be defined'}}</td>
+      <td>{{ member.role }}</td>
+      <td>{{'to be defined'}}</td>
+      <td>{{'to be defined'}}</td>
+      <td><span class="p-2 rounded-lg text-white {{member.is_accepted === false ? 'bg-yellow-500' : 'bg-green-500'}}">{{member.is_accepted === false ? 'Pending' : 'Accepted'}}</span></td>
+      
+      <td>
+        <p-button
+          styleClass="p-button-text p-button-rounded"
+          [style]="{
+            padding: 0,
+            width: 'fit-content'
+          }"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="25"
+            viewBox="0 0 24 25"
+            fill="none"
+          >
+            <path
+              d="M11.7399 7.70961L5.17844 14.2712C4.78208 14.6676 4.57025 15.2121 4.59456 15.7721L4.77343 19.8927L8.89392 20.0715C9.45397 20.0958 9.99851 19.884 10.3949 19.4876L16.9563 12.926M11.7399 7.70961L14.3223 5.12745C15.4939 3.956 17.3933 3.95605 18.5648 5.12758L19.5386 6.10136C20.7102 7.27298 20.7102 9.17258 19.5385 10.3441L16.9563 12.926M11.7399 7.70961L16.9563 12.926"
+              stroke="#4F5974"
+              stroke-width="1.3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M13.5781 5.83154L18.3112 10.5646"
+              stroke="#4F5974"
+              stroke-width="1.3"
+              stroke-linecap="round"
+            />
+          </svg>
+        </p-button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+<div class="flex items-center justify-end mt-[28px]">
+  <div class="flex items-center justify-end text-[#4F5974] text-base">
+    <p class="leading-[22.4px] font-normal mr-3">
+      {{ MAIN_PAGE_WORDS.USERS_PER_PAGE }}:
+
+      <p-dropdown
+        [style]="{ border: 0, 'font-weight': 700, color: '#4F5974' }"
+        [options]="paginationRows"
+      ></p-dropdown>
+    </p>
+  </div>
+  <div class="text-[#4F5974] text-base ml-[34px] mr-[41px]">
+    <p>
+      <span class="font-bold">5</span>
+      {{ MAIN_PAGE_WORDS.ITEMS_OF }}
+      <span class="font-bold">13</span>
+    </p>
+  </div>
+  <div class="flex items-center space-x-[46px] opacity-50">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="9"
+      height="16"
+      viewBox="0 0 9 16"
+      fill="none"
+    >
+      <path
+        d="M8 14.6667L1.33333 8.00004L8 1.33337"
+        stroke="#4F5974"
+        stroke-width="1.73333"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="10"
+      height="16"
+      viewBox="0 0 10 16"
+      fill="none"
+    >
+      <path
+        d="M1.66602 14.6667L8.33268 8.00004L1.66602 1.33337"
+        stroke="#4F5974"
+        stroke-width="1.73333"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
+</div>
+
+<p-dialog
+  header="Invite New User"
+  [(visible)]="inviteUser"
+  [modal]="true"
+  [style]="{ width: '368px', height: 'auto' }"
+  [draggable]="false"
+  [resizable]="false"
+  style
+>
+  <form [formGroup]="inviteUserForm">
+    <div class="flex flex-col space-y-6 px-4 py-2">
+      <!-- <div class="flex flex-col">
+        <label
+          class="text-[#4F5974] text-sm font-semibold leading-[19.6px] mb-2"
+          >User Name</label
+        >
+        <input
+          id="userName"
+          name="userName"
+          pInputText
+          formControlName="userName"
+        />
+      </div> -->
+      <div class="flex flex-col">
+        <label
+          class="text-[#4F5974] text-sm font-semibold leading-[19.6px] mb-2"
+          >User Email</label
+        >
+        <input
+          id="email"
+          name="email"
+          pInputText
+          formControlName="email"
+        />
+      </div>
+    <div class="flex flex-col">
+      <label
+      class="text-[#4F5974] text-sm font-semibold leading-[19.6px] mb-2"
+      >Role</label>
+      <p-dropdown   [style]="{width: '100%'}" optionLabel="display_name" [options]="roles" appendTo="body" formControlName="role" ></p-dropdown>
+    </div>
+      <div class="flex items-center justify-center space-x-3">
+        <p-button
+          (onClick)="inviteUserDialog()"
+          label="Cancel"
+          styleClass="p-button-secondary p-button-text"
+        ></p-button>
+        <p-button (onClick)="submitForm()" [disabled]="inviteUserForm.invalid" label="Create"></p-button>
+      </div>
+    </div>
+  </form>
+</p-dialog>

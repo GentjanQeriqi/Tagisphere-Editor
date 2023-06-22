@@ -1,0 +1,27 @@
+<div [ngClass]="editSource ? 'file-drop-area-edit-source':'file-drop-area'">
+  <span class="fake-btn">
+    <ng-container *ngIf="multiple;else single">
+     Choose multiple files
+    </ng-container>
+    <ng-template #single>
+      Chose a file
+    </ng-template>
+  </span>
+
+  <span class="file-msg">
+    <ng-container *ngIf="getListFiles().length > 0; else no_file">
+      <ng-container *ngIf="multiple;else one">
+        {{getListFiles().length}} Files to upload
+      </ng-container>
+      <ng-template #one>
+        {{getListFiles()[0].name}}
+      </ng-template>
+    </ng-container>
+    <ng-template #no_file>
+      Or drag and drop here
+    </ng-template>
+  </span>
+  <!-- <span class="file-msg" *ngFor="let myFile of getListFiles()" >{{myFile ? myFile.name : 'or drag and drop file here' }}</span> -->
+  <input class="file-input" type="file" *ngIf="!multiple" accept="{{accept}}">
+  <input class="file-input" type="file" multiple *ngIf="multiple" accept="{{accept}}">
+</div>

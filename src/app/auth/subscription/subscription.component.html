@@ -1,0 +1,359 @@
+<div
+  class="flex items-center justify-between px-[80px] border-b border-[#E0E0E2] pb-5"
+>
+  <div class="flex flex-col">
+    <p class="text-[18px] leading-[56.32px] font-[550] text-[#0097E6]">The</p>
+    <p class="text-5xl text-[#0097E6] font-serif">Tagisphere</p>
+  </div>
+  <div class="flex items-center space-x-[108px]">
+    <div class="flex items-center">
+      <img class="mr-[13px]" src="assets/images/LeftArrow.png" />
+      <p class="text-[#4F5974] font-normal leading-[25.2px] text-[18px]">
+        Back to the Homepage
+      </p>
+    </div>
+    <p-button
+      [style]="{
+        'box-shadow': '0px 0px 9.96667px rgba(43, 132, 255, 0.35)',
+        width: '160px'
+      }"
+      label="Sign in"
+    ></p-button>
+  </div>
+</div>
+
+<div class="px-[80px] mt-12 pb-[100px]">
+  <p class="text-[32px] text-[#21232E] font-bold leading-[35.2px] mb-10">
+    Checkout
+  </p>
+  <div class="flex items-center space-x-8">
+    <p-tabView>
+      <p-tabPanel header="Monthly">
+        <div class="flex space-x-8">
+          <div class="space-y-[11px]">
+            <div
+              class="flex items-center justify-between lg:w-[500px]"
+              *ngFor="let subscription of subscriptions"
+            >
+              <div
+                class="w-full flex items-center justify-between border border-[#E1E7F3] rounded-[9px] pl-4 pr-6 py-10"
+              >
+                <div class="flex items-center">
+                  <p-checkbox [ngClass]="{ 'rounded-full': true }"></p-checkbox>
+                  <p
+                    class="text-2xl text-[#21232E] leading-[33.6px] font-semibold ml-4"
+                  >
+                    {{ subscription.label }}
+                  </p>
+                </div>
+                <p class="text-[25px] leading-[35px] font-bold text-[#2B84FF]">
+                  {{ isNumber(subscription.price) ? "$" : ""
+                  }}{{ subscription.price }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="border rounded-[9px] border-[#E1E7F3] pl-6 pt-[27px] pb-12 pr-[42px] lg:w-[400px]"
+          >
+            <div>
+              <img
+                class="relative z-10"
+                src="assets/images/Rectangle 792.png"
+              />
+              <img
+                class="relative bottom-3"
+                src="assets/images/Rectangle 791.png"
+              />
+            </div>
+            <p class="text-2xl text-[#21232E] leading-[46px] font-semibold">
+              {{ selectedService.title }}
+            </p>
+            <p class="text-base leading-6 text-[#21232E] font-normal">
+              {{ selectedService.description }}
+            </p>
+            <div class="space-y-2 mt-[41px]">
+              <div *ngFor="let service of selectedService.perks">
+                <div class="flex items-center space-x-[11px]">
+                  <img src="assets/images/Checkmark.png" />
+                  <p class="text-base leading-8 text-[#21232E] font-normal">
+                    {{ service }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-tabPanel>
+      <p-tabPanel [disabled]="true" header="Annually"> </p-tabPanel>
+    </p-tabView>
+    <div class="flex flex-col">
+      <div class="flex items-center">
+        <div
+          class="px-[46px] py-[25px] bg-[#F7F7FC] border rounded-t-[9px] bg-opacity-[0.65]"
+          *ngFor="let payment of paymentMethods; let i = index"
+          [ngClass]="{
+            'bg-[#fff]': payment === selectedPaymentMethod,
+            'border-b-0': payment === selectedPaymentMethod
+          }"
+          (click)="setSelectedPayment(i)"
+        >
+          <img [src]="payment" />
+        </div>
+      </div>
+
+      <div class="pt-12 px-8 border-x border-b">
+        <p class="text-[#21232E] text-[18px] leading-[25.2px] font-semibold">
+          Please enter your card information below:
+        </p>
+        <div class="flex flex-col mb-[59px]">
+          <div class="flex items-center mt-[44px] space-x-6">
+            <div class="flex flex-col w-full">
+              <label
+                class="text-base text-[#21232E] font-semibold leading-[22.4px] opacity-[0.35]"
+                htmlFor="cardNumber"
+                >Card Number</label
+              >
+              <input [style]="{ height: '72px' }" id="cardNumber" pInputText />
+            </div>
+            <div class="flex flex-col w-full">
+              <label
+                class="text-base text-[#21232E] font-semibold leading-[22.4px] opacity-[0.35]"
+                htmlFor="expirationDate"
+                >Expiration Date</label
+              >
+              <input
+                [style]="{ height: '72px' }"
+                id="expirationDate"
+                pInputText
+              />
+            </div>
+          </div>
+          <div class="flex items-center mt-[44px] space-x-6">
+            <div class="flex flex-col w-full">
+              <label
+                class="text-base text-[#21232E] font-semibold leading-[22.4px] opacity-[0.35]"
+                htmlFor="nameOfCard"
+                >Name of Card</label
+              >
+              <input [style]="{ height: '72px' }" id="nameOfCard" pInputText />
+            </div>
+            <div class="flex flex-col w-full">
+              <label
+                class="text-base text-[#21232E] font-semibold leading-[22.4px] opacity-[0.35]"
+                htmlFor="cardSecurityCode"
+                >Card Security Code</label
+              >
+              <input
+                [style]="{ height: '72px' }"
+                id="cardSecurityCode"
+                pInputText
+                type="password"
+                minlength="3"
+                maxlength="3"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex flex-col px-8 py-6 bg-[#EEF2FA] border-x border-b rounded-b-[9px]"
+      >
+        <div class="flex items-center mb-[22px]">
+          <div class="flex flex-col w-full">
+            <p class="text-base text-[#212121] opacity-[0.35] leading-6 mb-2">
+              You've selected:
+            </p>
+            <p class="text-[18px] leading-[27px] font-semibold">
+              {{ subscriptions[2].label }}
+              <span class="font-normal">(Monthly Billing)</span>
+            </p>
+          </div>
+          <div class="flex flex-col w-full">
+            <p class="text-base text-[#212121] opacity-[0.35] leading-6 mb-2">
+              You will be charged:
+            </p>
+            <p class="text-[18px] leading-[27px] font-semibold">
+              ${{ subscriptions[2].price }}
+              <span class="font-normal">/Month</span>
+            </p>
+          </div>
+        </div>
+        <p-button
+          (onClick)="toggleModal()"
+          [style]="{ width: '100%', height: '72px' }"
+          label="Pay Now"
+        ></p-button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="placeOrder">
+  <div
+    (click)="toggleModal()"
+    class="top-0 left-0 right-0 bottom-0 bg-[#001030] z-10 opacity-80 fixed"
+  ></div>
+  <div
+    class="lg:w-[540px] h-fit mx-auto fixed z-20 left-[710px] top-[40px] right-[710px] bottom-[290px] bg-white rounded-[13px]"
+  >
+    <div class="w-full h-full px-5">
+      <img
+        (click)="toggleModal()"
+        class="absolute right-[33px] top-[33px] cursor-pointer"
+        src="assets/images/XIcon.png"
+      />
+      <p
+        class="text-[#21232E] text-2xl leading-[31px] font-bold text-center mb-3 mt-[67px]"
+      >
+        Order #1231
+      </p>
+      <p
+        class="text-[18px] leading-[25.2px] font-normal text-[#666771] text-center mb-6"
+      >
+        Order details:
+      </p>
+      <div
+        class="bg-[#F7F7FC] px-6 py-5 border border-[#E1E7F3] rounded-[9px] mb-5"
+      >
+        <p
+          class="text-[#212121] text-[18px] leading-[27px] font-semibold mb-[17px]"
+        >
+          Summary
+        </p>
+        <div class="space-y-[18px]">
+          <div class="flex items-center justify-between">
+            <p class="text-[#666771] text-base leading-6 font-normal">
+              Order Number
+            </p>
+            <p class="text-base text-[#212121] leading-6 font-medium">
+              #141241
+            </p>
+          </div>
+          <div class="flex items-center justify-between">
+            <p class="text-[#666771] text-base leading-6 font-normal">
+              Subscription
+            </p>
+            <p class="text-base text-[#212121] leading-6 font-medium">
+              Pro Service
+            </p>
+          </div>
+          <p class="text-[#3563E9] text-base leading-6 font-medium text-right">
+            Change the plan
+          </p>
+          <div class="flex items-center justify-between">
+            <p class="text-[#666771] text-base leading-6 font-normal">
+              Start Date
+            </p>
+            <p class="text-base text-[#212121] leading-6 font-medium">
+              December 11, 2022
+            </p>
+          </div>
+          <div class="flex items-center justify-between">
+            <p class="text-[#666771] text-base leading-6 font-normal">
+              End Date
+            </p>
+            <p class="text-base text-[#212121] leading-6 font-medium">
+              December 11, 2023
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-[#F7F7FC] px-6 py-5 border border-[#E1E7F3] rounded-[9px] mb-5"
+      >
+        <p
+          class="text-[#212121] text-[18px] leading-[27px] font-semibold mb-[17px]"
+        >
+          Payment Details
+        </p>
+        <div class="space-y-[18px]">
+          <div class="flex items-center justify-between">
+            <p class="text-[#666771] text-base leading-6 font-normal">
+              Order Number
+            </p>
+            <p class="text-base text-[#212121] leading-6 font-medium">
+              #141241
+            </p>
+          </div>
+          <div class="flex items-center justify-between">
+            <p class="text-[#666771] text-base leading-6 font-normal">
+              Subscription
+            </p>
+            <p class="text-base text-[#212121] leading-6 font-medium">
+              Pro Service
+            </p>
+          </div>
+          <p class="text-[#3563E9] text-base leading-6 font-medium text-right">
+            Change the plan
+          </p>
+          <div class="flex items-center justify-between">
+            <p class="text-[#666771] text-base leading-6 font-normal">
+              Start Date
+            </p>
+            <p class="text-base text-[#212121] leading-6 font-medium">
+              December 11, 2022
+            </p>
+          </div>
+          <div class="flex items-center justify-between">
+            <p class="text-[#666771] text-base leading-6 font-normal">
+              End Date
+            </p>
+            <p class="text-base text-[#212121] leading-6 font-medium">
+              December 11, 2023
+            </p>
+          </div>
+        </div>
+      </div>
+      <p-button
+        [style]="{
+          width: '340px',
+          'margin-left': '80px',
+          'margin-right': '100px',
+          'margin-bottom': '38px'
+        }"
+        (onClick)="completePurchase()"
+        label="Confirm"
+      ></p-button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="subscriptionPurchased">
+  <div
+    (click)="completePurchase()"
+    class="top-0 left-0 right-0 bottom-0 bg-[#001030] z-10 opacity-80 fixed"
+  ></div>
+  <div
+    class="lg:w-[540px] h-fit mx-auto fixed z-20 left-[710px] right-[710px] top-[200px] bottom-[290px] bg-white rounded-[13px]"
+  >
+    <div class="w-full h-full px-[50px] pt-[63px] pb-[39px]">
+      <img
+        (click)="completePurchase()"
+        class="absolute right-[33px] top-[33px] cursor-pointer"
+        src="assets/images/XIcon.png"
+      />
+      <img
+        class="mx-auto mb-[28px]"
+        src="assets/images/CompletedPurchase.png"
+      />
+      <p
+        class="text-2xl text-[#21232E] leading-[31px] font-bold text-center mb-3"
+      >
+        Subscription Purchased
+      </p>
+      <p
+        class="text-[#666771] text-[18px] leading-[25px] font-normal mb-[33px]"
+      >
+        Thank you! Your subscription are ready for use.
+      </p>
+      <div class="flex justify-center">
+        <p-button
+          [style]="{ width: '340px' }"
+          (onClick)="goToMain()"
+          label="Got It"
+        ></p-button>
+      </div>
+    </div>
+  </div>
+</div>

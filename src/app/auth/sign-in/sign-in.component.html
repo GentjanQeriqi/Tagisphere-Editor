@@ -1,0 +1,211 @@
+<p-toast></p-toast>
+<form [formGroup]="singInForm" class="h-screen">
+  <div class="lg:flex lg:flex-row xs:flex-col">
+    <div class="left lg:w-[1400px]">
+      <div class="flex flex-col pt-[38px] lg:pl-[61px] xs:pl-[14px]">
+        <div
+          class="flex flex-col items-start text-white xs:pb-[37.7px] lg:pb-[135px]"
+        >
+          <p class="xs:text-base lg:text-lg">The</p>
+          <p class="xs:text-[32px] lg:text-5xl">Tagishpere</p>
+          <p class="xs:text-base lg:text-lg">AR Platform</p>
+        </div>
+        <div
+          class="flex flex-col text-white pr-[98px] xs:hidden lg:block h-screen"
+        >
+          <p class="text-[32px] font-bold leading-[35px] mb-5">
+            {{ LOGIN_WORDS.ARCGIS }}
+          </p>
+          <p
+            @slideInOut
+            *ngIf="selectedIndex === 0"
+            class="text-lg font-normal leading-8 mb-[28px] max-h-[64px] h-[64px]"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          <p
+            @slideInOut
+            *ngIf="selectedIndex === 1"
+            class="text-lg font-normal leading-8 mb-[28px] max-h-[64px] h-[64px]"
+          >
+            Lorem ipsum dolor sit amet, consectetur
+          </p>
+          <p
+            @slideInOut
+            *ngIf="selectedIndex === 2"
+            class="text-lg font-normal leading-8 mb-[28px] max-h-[64px] h-[64px]"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna
+          </p>
+          <p
+            @slideInOut
+            *ngIf="selectedIndex === 3"
+            class="text-lg font-normal leading-8 mb-[28px] max-h-[64px] h-[64px]"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut lab
+          </p>
+          <p
+            @slideInOut
+            *ngIf="selectedIndex === 4"
+            class="text-lg font-normal leading-8 mb-[28px] max-h-[64px] h-[64px]"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          </p>
+          <div class="flex items-center">
+            <div class="space-x-4 flex items-center ml-[9px]">
+              <ng-container
+                *ngFor="let item of [].constructor(5); let i = index"
+              >
+                <img
+                  pRipple
+                  width="6"
+                  height="6"
+                  class="cursor-pointer"
+                  (click)="nextCarouselStep(i)"
+                  *ngIf="i !== selectedIndex"
+                  src="assets/images/Ellipse 148.png"
+                />
+                <div
+                  *ngIf="i === selectedIndex"
+                  class="flex items-center animate-pulse"
+                >
+                  <img src="assets/images/Ellipse 152.png" />
+                  <img
+                    class="absolute ml-[7.4px]"
+                    src="assets/images/Ellipse 147.png"
+                  />
+                  <img
+                    class="absolute ml-[4px]"
+                    src="assets/images/Ellipse 146.png"
+                  />
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        <div class="absolute left-[21px] -bottom-[277px]">
+          <img src="assets/images/Frame 33854.png" />
+        </div>
+      </div>
+    </div>
+    <div class="w-full lg:mt-[185px]">
+      <div
+        [ngStyle]="
+          screenWidth <= 428
+            ? {
+                background:
+                  'linear-gradient(103.77deg, #2b84ff 3.64%, #125ec7 86.42%), #d9d9d9'
+              }
+            : { background: 'white' }
+        "
+      >
+        <div
+          class="flex flex-col lg:w-[848px] xs:px-10 lg:px-[220px] mx-auto xs:rounded-t-[28px] xs:border-t lg:border-0 xs:bg-white xs:pb-12"
+        >
+          <div class="flex flex-col items-center">
+            <p
+              class="text-[#21232E] xs:text-[32px] xs:leading-[35.2px] lg:text-5xl font-bold lg:leading-[53px] mb-[14px] xs:mt-10"
+            >
+              {{ LOGIN_WORDS.LOG_IN }}
+            </p>
+            <p
+              class="text-[#666771] xs:text-base xs:leading-[22.4px] lg:text-[20px] font-normal lg:leading-7 mb-12"
+            >
+              {{ LOGIN_WORDS.SIGN_IN }}
+            </p>
+          </div>
+          <div @slideInOut class="flex flex-col w-full space-y-5">
+            <div class="flex flex-col">
+              <!-- <div class="flex flex-col pb-4">
+                <label
+                  class="text-[#21232E] xs:text-sm lg:text-base leading-[22px] font-semibold mix-blend-normal opacity-[0.35] mb-1"
+                  htmlFor="username"
+                  >Username</label
+                >
+
+                <input
+                  formControlName="username"
+                  id="username"
+                  [ngStyle]="
+                    screenWidth > 428 ? { height: '72px' } : { height: '50px' }
+                  "
+                  pInputText
+                />
+              </div> -->
+              <div class="flex flex-col">
+                <label
+                  class="text-[#21232E] xs:text-sm lg:text-base leading-[22px] font-semibold mix-blend-normal opacity-[0.35] mb-1"
+                  htmlFor="email"
+                  >{{ LOGIN_WORDS.EMAIL }}</label
+                >
+                <input
+                  formControlName="email"
+                  id="email"
+                  [ngStyle]="
+                    screenWidth > 428 ? { height: '72px' } : { height: '50px' }
+                  "
+                  pInputText
+                />
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <label
+                class="text-[#21232E] xs:text-sm lg:text-base leading-[22px] font-semibold mix-blend-normal opacity-[0.35] mb-1"
+                htmlFor="password"
+                >{{ LOGIN_WORDS.PASSWORD }}</label
+              >
+              <span class="p-input-icon-right">
+                <i (click)="hide = !hide" class="pi pi-eye"></i>
+                <input
+                  formControlName="password"
+                  id="password"
+                  class="w-full"
+                  [type]="hide ? 'password' : 'text'"
+                  [ngStyle]="
+                    screenWidth > 428 ? { height: '72px' } : { height: '50px' }
+                  "
+                  pInputText
+                />
+              </span>
+            </div>
+          </div>
+          <a
+            routerLink="../forgot-password"
+            class="text-[#2B84FF] mt-[10px] font-normal text-base leading-[22.4px] text-right"
+          >
+            {{ LOGIN_WORDS.FORGOT_PASSWORD }}
+          </a>
+          <div class="w-full mt-[14px]">
+            <p-button
+              (click)="submitForm()"
+              [label]="LOGIN_WORDS.LOG_IN"
+            ></p-button>
+            <p
+              class="text-center my-[14px] xs:text-sm font-medium text-[#666771] leading-[22.4px]"
+            >
+              {{ LOGIN_WORDS.OR }}
+            </p>
+            <p-button
+              styleClass="p-button-outlined p-button-secondary"
+              [style]="{ color: '#cdd6e8' }"
+            >
+              <img src="assets/images/Google__G__Logo 1.png" />
+              <span>{{ LOGIN_WORDS.CONTINUE_WITH_GOOGLE }} </span>
+            </p-button>
+          </div>
+          <p
+            class="text-base font-normal xs:w-[368px] leading-[22.4px] text-[#666771] text-center mt-6"
+          >
+            {{ LOGIN_WORDS.DONT_HAVE_ACCOUT }}
+            <a routerLink="../signup" class="text-[#2B84FF] no-underline">{{
+              LOGIN_WORDS.CREATE_ACCOUNT
+            }}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

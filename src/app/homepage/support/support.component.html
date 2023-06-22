@@ -1,0 +1,55 @@
+<section class="bg-[#F3F8FC] px-6 h-[245vh] lg:h-[220vh]">
+  <div
+    class="pt-[60px] lg:py-[148px] flex flex-col items-center px-10 relative xs:h-full"
+  >
+    <p class="text-[#2478ED] font-semibold leading-8 text-lg">
+      {{ SUPPORT_WORDS.FIND_THE_ANSWER }}
+    </p>
+
+    <p class="text-[32px] lg:text-[54px] font-bold leading-[60px]">
+      {{ SUPPORT_WORDS.SUPPORT }}
+    </p>
+    <div
+      class="rounded-[40px] xs:px-[5px] text-center lg:px-[80px] bg-blue-200 absolute bottom-[-60px] lg:bottom-[-150px] left-0 right-0 self-center w-full mx-auto max-w-[1600px] bg-gradient-to-r from-[#2B84FF] to-[#125EC7] h-auto"
+    >
+      <div class="xs:pt-[70px] lg:pt-[131px] flex flex-col">
+        <h1 class="text-white font-bold text-[32px] lg:text-[54px] pb-16">
+          {{ SUPPORT_WORDS.FAQ }}
+        </h1>
+
+        <div class="px-3" *ngIf="screenWidth <= 428">
+          <img class="m-auto pb-5 px-4" src="assets/images/smallFAQ.png" />
+          <p-accordion class="max-w-[800px]" [activeIndex]="0">
+            <ng-container *ngFor="let qa of questionsAnswers">
+              <p-accordionTab header="{{ qa.question }}">
+                <p>
+                  {{ qa.answer }}
+                </p>
+              </p-accordionTab>
+              <p-divider></p-divider>
+            </ng-container>
+          </p-accordion>
+        </div>
+
+        <div
+          class="flex flex-row justify-between items-center"
+          *ngIf="screenWidth > 428"
+        >
+          <p-accordion class="max-w-[800px]" [activeIndex]="0">
+            <ng-container *ngFor="let qa of questionsAnswers">
+              <p-accordionTab header="{{ qa.question }}">
+                <p>
+                  {{ qa.answer }}
+                </p>
+              </p-accordionTab>
+              <p-divider></p-divider>
+            </ng-container>
+          </p-accordion>
+          <div *ngIf="screenWidth > 428">
+            <img src="assets/images/FAQ image.png" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

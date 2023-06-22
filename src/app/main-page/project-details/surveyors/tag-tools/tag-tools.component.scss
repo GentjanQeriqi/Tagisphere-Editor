@@ -1,0 +1,34 @@
+:host ::ng-deep .mapboxgl-canvas{
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+}
+
+::ng-deep .mapboxgl-ctrl-attrib-inner {
+  display: none !important;
+}
+
+.overlay {
+  position: fixed;
+  cursor: crosshair;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999; /* Ensure the overlay appears on top */
+}
+:host ::ng-deep .marker{
+  background-size: cover;
+}
+
+:host ::ng-deep .p-dropdown{
+  width: 100%;
+}
+:host ::ng-deep .mapboxgl-popup-content{
+  width: fit-content !important;
+}
+
+:host ::ng-deep .mapboxgl-popup-close-button{
+  font-size: large;
+}

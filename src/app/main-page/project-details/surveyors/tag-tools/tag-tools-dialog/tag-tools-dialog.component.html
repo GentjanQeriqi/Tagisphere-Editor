@@ -1,0 +1,94 @@
+<form [formGroup]="tagEditForm">
+  <div class="flex flex-row items-center justify-between pb-4">
+    <label class="text-[#21232E] xs:text-sm lg:text-base leading-[22px] font-semibold mix-blend-normal opacity-[0.35] mb-1" 
+           htmlFor="name">
+           Label
+    </label>
+    <input class="w-[70%]" formControlName="name" id="name" pInputText />
+  </div>
+  <div class="flex flex-row items-center justify-between pb-4">
+    <label class="text-[#21232E] xs:text-sm lg:text-base leading-[22px] font-semibold mix-blend-normal opacity-[0.35] mb-1" 
+           htmlFor="category">
+           Category
+    </label>
+   <p-dropdown class="w-[70%]"  (ngModelChange)="categoryChanged($event)"  [options]="categories" formControlName="category" optionValue="id" optionLabel="name"  placeholder="Select Category">
+      <ng-template let-category pTemplate="selectedIcon">
+          <div class="flex align-items-center gap-2">
+              <div>{{ category.name }}</div>
+          </div>
+      </ng-template>
+  </p-dropdown>
+  </div>
+
+  
+
+  <div  class="flex flex-row items-center justify-between pb-4">
+    <label class="text-[#21232E] xs:text-sm lg:text-base leading-[22px] font-semibold mix-blend-normal opacity-[0.35] mb-1" 
+           htmlFor="sybcategory">
+           Subcategory
+    </label>
+    <p-dropdown  class="w-[70%]" [options]="subCategories" formControlName="additional_data" optionValue="id" optionLabel="name"  placeholder="Select Subcategory">
+      <ng-template  let-subcategory pTemplate="selectedIcon">
+          <div class="flex align-items-center gap-2">
+              <div>{{ subcategory.name }}</div>
+          </div>
+      </ng-template>
+  </p-dropdown>
+  </div>
+
+  <div class="flex flex-row items-center justify-between pb-4">
+    <label class="text-[#21232E] xs:text-sm lg:text-base leading-[22px] font-semibold mix-blend-normal opacity-[0.35] mb-1" 
+           htmlFor="offset">
+           Offset
+    </label>
+    <div class=" flex flex-row w-[70%]">
+    <input formControlName="offset" class="w-[70%]"  pInputText />
+    <p-dropdown [options]="offsetType" optionLabel="name">
+      <ng-template let-offsetType pTemplate="offsetType">
+          <div class="flex align-items-center gap-2">
+              <div>{{ offsetType.name }}</div>
+          </div>
+      </ng-template>
+  </p-dropdown>
+  </div>
+  </div>
+
+  <div class="flex flex-row items-center justify-between pb-4">
+    <label class="text-[#21232E] xs:text-sm lg:text-base leading-[22px] font-semibold mix-blend-normal opacity-[0.35] mb-1" 
+           htmlFor="icon">
+           Icon
+    </label>
+    <p-dropdown class="w-[70%]" [options]="icons" [(ngModel)]="selectedIcon" formControlName="icon" optionValue="id" optionLabel="name"  placeholder="Select Icon">
+      <ng-template pTemplate="selectedIcon">
+        <!-- <div class="flex align-items-center gap-2" >
+            <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"  [class]="'flag flag-' + selectedIcon.name.toLowerCase()" style="width: 18px"/>
+            <div>{{ selectedIcon.name }}</div>
+        </div> -->
+    </ng-template>
+      <ng-template let-icon pTemplate="selectedIcon">
+          <div class="flex align-items-center gap-2">
+              <img [src]="icon.src" [class]="'flag flag-' + icon.name.toLowerCase()" style="width: 18px"/>
+              <div>{{ icon.name }}</div>
+          </div>
+      </ng-template>
+  </p-dropdown>
+  </div>
+  <!-- formArrayName="entries" put this when back-end is fixed -->
+  <div  formArrayName="entries" >
+    <div *ngFor="let entry of entries.controls; let i = index" [formGroupName]="i">
+      <div  class="flex flex-row items-center justify-between"  >
+        <label class="text-[#21232E] xs:text-sm lg:text-base leading-[22px] font-semibold mix-blend-normal opacity-[0.35] mb-1" 
+          htmlFor="entries">
+        Hyperlink
+        </label>
+        <input class="w-[70%]" pInputText formControlName="hyperlink"  type="text">
+        <!-- Add other form controls here -->
+      </div>
+    
+ 
+  </div>
+  </div>
+  <div class="flex justify-center pt-4">
+  <p-button  (onClick)="updateTag()"  [style]="{ padding: '12px', width:'auto' }">Save</p-button>
+</div>
+</form>

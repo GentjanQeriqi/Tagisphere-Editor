@@ -1,0 +1,135 @@
+<form [formGroup]="csvConfigurationForm">
+    <div class="flex flex-row justify-between pl-5 pr-[45px] gap-[24px] pb-[55px] ">
+        <div class="flex flex-col w-[50%]">
+
+            <div class="flex flex-row justify-between items-center pt-5">
+                <span class="text-sm text-[#4F5974] font-semibold leading-[19.6px]">Label <span
+                        class="text-red-300">*</span> </span>
+                <p-dropdown appendTo="body" [options]="csvFile.headers" optionLabel="csvHeader" optionValue="dbColumn"
+                    formControlName="label" class="w-[70%]" placeholder="Select the label field"
+                    [style]="{'width':'100%'}"></p-dropdown>
+
+            </div>
+
+            <div class="flex flex-row justify-between items-center pt-5">
+                <span class="text-sm text-[#4F5974] font-semibold leading-[19.6px]">Latitude <span
+                        class="text-red-300">*</span> </span>
+                <p-dropdown appendTo="body" [options]="csvFile.headers" optionLabel="csvHeader" optionValue="dbColumn"
+                    formControlName="lat" class="w-[70%]" placeholder="Select the Latitude field"
+                    [style]="{'width':'100%'}"></p-dropdown>
+            </div>
+
+            <div class="flex flex-row justify-between items-center pt-5">
+                <span class="text-sm text-[#4F5974] font-semibold leading-[19.6px]">Longitude <span
+                        class="text-red-300">*</span> </span>
+                <p-dropdown appendTo="body" [options]="csvFile.headers" optionLabel="csvHeader" optionValue="dbColumn"
+                    formControlName="lng" class="w-[70%]" placeholder="Select the Longitude field"
+                    [style]="{'width':'100%'}"></p-dropdown>
+            </div>
+
+            <div class="flex flex-row justify-between items-center pt-5">
+                <span class="text-sm text-[#4F5974] font-semibold leading-[19.6px]">Projection
+                    <span class="text-red-300">*</span>
+
+                </span>
+                <p-autoComplete 
+                    formControlName="epsg"
+                    [forceSelection]="true"
+                    [minLength]="2"
+                    [suggestions]="(epsgOptions$| async) ? (epsgOptions$| async) || [] :[]"
+                    (completeMethod)="onSearchEPSGInstance($event.query)"
+                    [style]="{'width':'100%'}"
+                    class="w-[70%]"
+                     placeholder="Search for EPSG"
+                    appendTo="body"
+                    >
+                
+                </p-autoComplete>
+
+                <!-- <p-autoComplete
+                    [suggestions]="(epsgOptions$| async) ? [(epsgOptions$| async)] :[]"
+                    (completeMethod)="onSearchEPSGInstance($event.query)"
+                    field="code"
+                    [forceSelection]="true"
+                    [minLength]="3"
+                    formControlName="epsg"
+                    [style]="{'width':'100%'}"
+                    class="w-[70%]"
+                     placeholder="Search for EPSG"
+                    appendTo="body"
+                    >
+                    <ng-template let-epsg pTemplate="item">
+                            <div>{{ epsg.name }}</div>
+                            <div> {{epsg.authority}}:{{epsg.code}} </div>
+                            <small> {{epsg.area}} </small>
+                    </ng-template>
+                </p-autoComplete> -->
+
+            </div>
+
+          
+
+        </div>
+
+        <div class="flex flex-col w-[50%]">
+            <div class="flex flex-row justify-between items-center pt-5">
+                <span class="text-sm text-[#4F5974] font-semibold leading-[19.6px]">Description</span>
+                <p-dropdown appendTo="body" [options]="csvFile.headers" optionLabel="csvHeader" optionValue="dbColumn"
+                    formControlName="description" class="w-[70%]" placeholder="Select the description field"
+                    [style]="{'width':'100%'}"></p-dropdown>
+
+            </div>
+
+            <div class="flex flex-row justify-between items-center pt-5">
+                <span class="text-sm text-[#4F5974] font-semibold leading-[19.6px]">Category</span>
+                <p-dropdown appendTo="body" [options]="csvFile.headers" optionLabel="csvHeader" optionValue="dbColumn"
+                    formControlName="category" class="w-[70%]" placeholder="Select the Category field"
+                    [style]="{'width':'100%'}"></p-dropdown>
+            </div>
+
+
+            <div class="flex flex-row justify-between items-center pt-5">
+                <span class="text-sm text-[#4F5974] font-semibold leading-[19.6px]">Subcategory</span>
+                <p-dropdown appendTo="body" [options]="csvFile.headers" optionLabel="csvHeader" optionValue="dbColumn"
+                    formControlName="subcategory" class="w-[70%]" placeholder="Select the Subcategory field"
+                    [style]="{'width':'100%'}"></p-dropdown>
+            </div>
+
+
+            <div class="flex flex-row justify-between items-center pt-5">
+                <span class="text-sm text-[#4F5974] font-semibold leading-[19.6px]">Link</span>
+                <p-dropdown appendTo="body" [options]="csvFile.headers" optionLabel="csvHeader" optionValue="dbColumn"
+                    formControlName="link" class="w-[70%]" placeholder="Select the link field"
+                    [style]="{'width':'100%'}"></p-dropdown>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</form>
+
+<ng-container *ngIf="csvFile">
+    <div class="line-separator"></div>
+    <div class="p-5">
+        <app-csv-table [csvFile]="csvFile"></app-csv-table>
+    </div>
+</ng-container>
+
+<div class="custom-dialog-footer">
+    <p-button (onClick)="onClose()" label="Cancel"
+    styleClass="p-button-secondary p-button-text"></p-button>
+    <ng-container *ngIf="{csvConfiguration : csvConfiguration$|async} as context">
+        <ng-container *ngIf="context.csvConfiguration">
+            <p-button label="Update CSV tags" [disabled]="!csvConfigurationForm.dirty  || !csvConfigurationForm.valid || csvConfigurationForm.disabled"
+                (onClick)="onUpdateCsvConfigurationInstance()"></p-button>
+        </ng-container>
+    
+        <ng-container *ngIf="!context.csvConfiguration">
+            <p-button label="Define CSV tags" [disabled]="!csvConfigurationForm.dirty  || !csvConfigurationForm.valid || csvConfigurationForm.disabled"
+                (onClick)="onAddCsvConfigurationInstance()"></p-button>
+        </ng-container>
+    </ng-container>
+
+</div>

@@ -1,0 +1,32 @@
+::ng-deep .p-sidebar {
+  background-color: #f6f8fc;
+}
+
+::ng-deep .p-sidebar .p-sidebar-content {
+  padding: 0;
+}
+
+.gilroy {
+  font-family: "Gilroy-Bold", sans-serif;
+}
+
+::ng-deep .p-button {
+  width: 100%;
+}
+
+::ng-deep .p-button > button {
+  display: flex;
+}
+
+::ng-deep .p-avatar > img {
+  border-radius: 7px;
+}
+
+::ng-deep .p-dialog .p-dialog-header {
+  padding: 30px 36px 26px 36px;
+  font-size: 18px;
+  color: #191a1c;
+  font-weight: 700;
+  line-height: 23.4px;
+}
+

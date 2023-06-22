@@ -1,0 +1,208 @@
+<div
+  class="flex items-center mt-5"
+  [ngStyle]="
+    (sidenavService.$collapsed | async)
+      ? { position: 'absolute', top: '10px' }
+      : {}
+  "
+>
+  <p class="text-[26px] text-[#191A1C] leading-[28.6px] font-bold mr-6">
+    {{ MAIN_PAGE_WORDS.PROJECTS }}
+  </p>
+  <p-button
+    (onClick)="newProjectDialog()"
+    icon="pi pi-plus"
+    styleClass="p-button-rounded"
+    [style]="{ width: '42px', height: '42px' }"
+  ></p-button>
+</div>
+
+<div class="flex items-center justify-between mt-[22px] mb-[13px]">
+  <span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input
+      type="text"
+      pInputText
+      placeholder="Search..."
+      [style]="{ height: '48px', width: '420px', background: '#CDD6E840' }"
+    />
+  </span>
+  <p-button [style]="{ background: '#EBEEF5', border: '#EBEEF5' }">
+    <i class="pi pi-filter-fill text-[#6E7191]"></i>
+  </p-button>
+</div>
+
+<p-table
+  [rows]="7"
+  [rowsPerPageOptions]="[7, 15, 20]"
+  [paginator]="true"
+  [value]="projects"
+  [(selection)]="selectedProjects"
+  dataKey="code"
+  [tableStyle]="{
+    'min-width': '50rem',
+    border: '1px solid #E1E7F3',
+    'border-radius': '13px'
+  }"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 4rem">
+        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+      </th>
+      <th style="min-width: 200px">
+        <div class="flex items-center text-[#4F5974]">
+          {{ MAIN_PAGE_WORDS.PROJECTS_HEADERS.PROJECT_NAME }}
+          <img class="ml-[17px]" src="assets/images/SortIcon.png" />
+        </div>
+      </th>
+      <th style="min-width: 200px">
+        <div class="flex items-center text-[#4F5974]">
+          {{ MAIN_PAGE_WORDS.PROJECTS_HEADERS.PROJECT_TYPE }}
+          <img class="ml-[17px]" src="assets/images/SortIcon.png" />
+        </div>
+      </th>
+      <th style="min-width: 200px">
+        <div class="flex items-center text-[#4F5974]">
+          {{ MAIN_PAGE_WORDS.PROJECTS_HEADERS.CREATION_DATE }}
+          <img class="ml-[17px]" src="assets/images/SortIcon.png" />
+        </div>
+      </th>
+      <th style="min-width: 200px">
+        <div class="flex items-center text-[#4F5974]">
+          {{ MAIN_PAGE_WORDS.PROJECTS_HEADERS.DATA }}
+          <img class="ml-[17px]" src="assets/images/SortIcon.png" />
+        </div>
+      </th>
+      <th style="min-width: 200px">
+        <div class="flex items-center text-[#4F5974]">
+          {{ MAIN_PAGE_WORDS.PROJECTS_HEADERS.CREATOR }}
+          <img class="ml-[17px]" src="assets/images/SortIcon.png" />
+        </div>
+      </th>
+      <th></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-project>
+    <tr
+      class="cursor-pointer"
+      (click)="goToProjectDetails(project, $event, project.id)"
+    >
+      <td>
+        <p-tableCheckbox
+          (click)="$event.stopPropagation()"
+          [value]="project"
+          [inputId]="project.id"
+        ></p-tableCheckbox>
+      </td>
+      <td>{{ project.name }}</td>
+      <td>
+        <!-- <div
+        [style]="{
+          background: project.type,
+          width: 'fit-content',
+          color: 'white',
+          'border-radius': '4px',
+          padding: '8px',
+          'font-size': '16px',
+          'line-height': '14px',
+          'font-weight': 500
+        }"
+      > -->
+        <span
+          class="w-fit text-white rounded-md p-2 font-medium"
+          [ngStyle]="{ 'background-color': getTypeColor(project.type) }"
+          >{{ getProjectTypeLabel(project.type) }}</span
+        >
+        <!-- </div> -->
+      </td>
+      <td>{{ project.created_at | date }}</td>
+      <td>{{ "to be defined" }}</td>
+      <td>{{ project.members[0].user }}</td>
+      <td>
+        <p-button
+          (onClick)="$event.stopPropagation()"
+          styleClass="p-button-text p-button-rounded"
+          [style]="{
+            padding: 0,
+            width: 'fit-content'
+          }"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="25"
+            viewBox="0 0 24 25"
+            fill="none"
+          >
+            <path
+              d="M11.7399 7.70961L5.17844 14.2712C4.78208 14.6676 4.57025 15.2121 4.59456 15.7721L4.77343 19.8927L8.89392 20.0715C9.45397 20.0958 9.99851 19.884 10.3949 19.4876L16.9563 12.926M11.7399 7.70961L14.3223 5.12745C15.4939 3.956 17.3933 3.95605 18.5648 5.12758L19.5386 6.10136C20.7102 7.27298 20.7102 9.17258 19.5385 10.3441L16.9563 12.926M11.7399 7.70961L16.9563 12.926"
+              stroke="#4F5974"
+              stroke-width="1.3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M13.5781 5.83154L18.3112 10.5646"
+              stroke="#4F5974"
+              stroke-width="1.3"
+              stroke-linecap="round"
+            />
+          </svg>
+        </p-button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<div class="flex items-center justify-end mt-[14px]">
+  <div class="flex items-center justify-end text-[#4F5974] text-base">
+    <p class="leading-[22.4px] font-normal mr-3">
+      {{ MAIN_PAGE_WORDS.PRODUCTS_PER_PAGE }}:
+
+      <p-dropdown
+        [style]="{ border: 0, 'font-weight': 700, color: '#4F5974' }"
+        [options]="paginationRows"
+      ></p-dropdown>
+    </p>
+  </div>
+  <div class="text-[#4F5974] text-base ml-[34px] mr-[41px]">
+    <p>
+      <span class="font-bold">5</span>
+      {{ MAIN_PAGE_WORDS.ITEMS_OF }}
+      <span class="font-bold">13</span>
+    </p>
+  </div>
+  <div class="flex items-center space-x-[46px] opacity-50">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="9"
+      height="16"
+      viewBox="0 0 9 16"
+      fill="none"
+    >
+      <path
+        d="M8 14.6667L1.33333 8.00004L8 1.33337"
+        stroke="#4F5974"
+        stroke-width="1.73333"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="10"
+      height="16"
+      viewBox="0 0 10 16"
+      fill="none"
+    >
+      <path
+        d="M1.66602 14.6667L8.33268 8.00004L1.66602 1.33337"
+        stroke="#4F5974"
+        stroke-width="1.73333"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
+</div>
